@@ -3,7 +3,7 @@ hi CursorLine term=none cterm=none ctermbg=7
 syntax on
 set shiftwidth=4
 set tabstop=4
-set background=light
+set background=dark
 
 if has("autocmd")
 	filetype plugin indent on
