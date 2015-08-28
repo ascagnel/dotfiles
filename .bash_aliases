@@ -1,4 +1,3 @@
-alias rt='rtorrent'
 alias ffmpeg='avconv'
 alias aptitude='apt-get'
 
