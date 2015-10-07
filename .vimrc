@@ -18,6 +18,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mklabs/vim-backbone.git'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
