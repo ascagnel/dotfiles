@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set hidden
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -22,6 +23,7 @@ Plugin 'mklabs/vim-backbone.git'
 Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'benmills/vimux'
 Plugin 'mhinz/vim-startify'
+Plugin 'szw/vim-ctrlspace'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -49,6 +51,7 @@ set sidescrolloff=5
 set cmdheight=2
 set autoread
 set autochdir
+set exrc
 
 " Always show the status line
 set laststatus=2
@@ -83,5 +86,7 @@ augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+set secure
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
