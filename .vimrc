@@ -24,6 +24,7 @@ Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'benmills/vimux'
 Plugin 'mhinz/vim-startify'
 Plugin 'szw/vim-ctrlspace'
+Plugin 'ryanss/vim-hackernews'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -71,16 +72,19 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+
+let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
+let g:ctrlp_max_depth=45
+let g:ctrlp_working_path_mode='r'
+let g:ctrlp_root_markers=['dibs','.git']
+let g:ctrlp_max_files=0
+let g:ctrlp_use_caching=5
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-set wildignore+=*/node_modules/**
+            \ 'dir': '\v[\/](\/node_modules|\/\.git|assets\/c)$'
+            \ }
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:ctrlp_max_depth=40
 
 augroup reload_vimrc " {
     autocmd!
