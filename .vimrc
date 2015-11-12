@@ -25,6 +25,8 @@ Plugin 'benmills/vimux'
 Plugin 'mhinz/vim-startify'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'ryanss/vim-hackernews'
+Plugin 'evidens/vim-twig.git'
+Plugin 'tpope/vim-dispatch.git'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -67,6 +69,8 @@ set shiftwidth=4
 set eol
 set nolist
 
+set wildignore+=**/node_modules
+
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
@@ -76,6 +80,7 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
 let g:ctrlp_working_path_mode='r'
+let g:ctrlp_lazy_update = 1
 let g:ctrlp_root_markers=['dibs','.git']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
@@ -85,6 +90,11 @@ let g:ctrlp_custom_ignore = {
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+let g:ack_use_dispatch = 1
+let g:ackpreview = 1
+let g:ack_default_options =
+            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
+            \ "--ignore-dir node_modules"
 
 augroup reload_vimrc " {
     autocmd!
