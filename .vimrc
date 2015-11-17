@@ -18,12 +18,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'mklabs/vim-backbone.git'
 Plugin 'nathanaelkane/vim-indent-guides.git'
-Plugin 'benmills/vimux'
 Plugin 'mhinz/vim-startify'
-Plugin 'szw/vim-ctrlspace'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
@@ -84,9 +81,6 @@ let g:ctrlp_lazy_update = 1
 let g:ctrlp_root_markers=['dibs','.git']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/](\/node_modules|\/\.git|assets\/c)$'
-            \ }
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
