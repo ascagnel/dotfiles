@@ -27,6 +27,7 @@ Plugin 'szw/vim-ctrlspace'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
+Plugin 'scrooloose/syntastic.git'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -44,6 +45,7 @@ if has("autocmd")
 	filetype plugin indent on
 endif
 
+set relativenumber
 set showcmd
 set showmatch
 set ignorecase
