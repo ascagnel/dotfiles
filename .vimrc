@@ -17,7 +17,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mklabs/vim-backbone.git'
 Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'mhinz/vim-startify'
@@ -55,6 +55,10 @@ set autoread
 set autochdir
 set exrc
 
+set backupdir=~/.vim/files/backupdir//
+set directory=~/.vim/files/swapdir//
+set undodir=~/.vim/files/undodir//
+
 " Always show the status line
 set laststatus=2
 
@@ -86,11 +90,22 @@ let g:ctrlp_use_caching=5
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:ack_use_dispatch = 1
+let g:ack_use_dispatch = 0
+let g:ackhighlight = 1
 let g:ackpreview = 1
 let g:ack_default_options =
             \ " -s -H --nocolor --nogroup --column --smart-case --follow"
             \ "--ignore-dir node_modules"
+
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+let g:syntastic_javascript_eslint_blockBindings = "true"
+
+function! ESLintArgs()
+    let rules = findfile('index.js', '.;~/projects/eslint-config-1stdibs')
+    return rules != '' ? '--rulesdir ' . shellescape(fnamemodify(rules, ':p:h')) : ''
+endfunction
+
+autocmd FileType javascript let b:syntastic_javascript_eslint_args = ESLintArgs()
 
 augroup reload_vimrc " {
     autocmd!
@@ -98,5 +113,12 @@ augroup reload_vimrc " {
 augroup END " }
 
 set secure
+
+nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>GitGutterNextHunk
+
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
