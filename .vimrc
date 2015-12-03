@@ -25,6 +25,11 @@ Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'scrooloose/syntastic.git'
+Plugin 'tpope/vim-fugitive'
+Bundle 'jlanzarotta/bufexplorer'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-surround.git'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -63,7 +68,7 @@ set undodir=~/.vim/files/undodir//
 set laststatus=2
 
 " Format the status line
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ \(\%l,%v\)
+set statusline=\ %m%f\ %{fugitive#statusline()}\ \(\%l,%v\)
 set number
 
 set expandtab
@@ -87,6 +92,7 @@ let g:ctrlp_lazy_update = 1
 let g:ctrlp_root_markers=['dibs','.git']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
+let g:ctrlp_clear_cache_on_exit=0
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -99,6 +105,28 @@ let g:ack_default_options =
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_blockBindings = "true"
+
+let g:startify_list_order = [
+            \ ['  Sessions '],  'sessions',
+            \ ['  Bookmarks '], 'bookmarks',
+            \ ['  MRU '],       'files',
+            \ ['  MRU DIR '],   'dir',
+            \ ]
+
+let g:startify_bookmarks = [ 
+            \ {'c': '~/.vimrc'},
+            \ {'d': '~/projects/1stdibs.com'},
+            \ {'a': '~/projects/1stdibs-admin-v2'},
+            \ {'b': '~/projects/bunsen/'}
+            \ ]
+
+let g:startify_change_to_vcs_root     = 1
+let g:startify_change_to_dir          = 0
+let g:startify_enable_special         = 0
+let g:startify_files_number           = 8
+let g:startify_session_autoload       = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_session_persistence    = 1
 
 function! ESLintArgs()
     let rules = findfile('index.js', '.;~/projects/eslint-config-1stdibs')
