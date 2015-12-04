@@ -113,13 +113,6 @@ let g:startify_list_order = [
             \ ['  MRU DIR '],   'dir',
             \ ]
 
-let g:startify_bookmarks = [ 
-            \ {'c': '~/.vimrc'},
-            \ {'d': '~/projects/1stdibs.com'},
-            \ {'a': '~/projects/1stdibs-admin-v2'},
-            \ {'b': '~/projects/bunsen/'}
-            \ ]
-
 let g:startify_change_to_vcs_root     = 1
 let g:startify_change_to_dir          = 0
 let g:startify_enable_special         = 0
