@@ -13,7 +13,6 @@ Plugin 'othree/yajs.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
@@ -30,6 +29,7 @@ Bundle 'jlanzarotta/bufexplorer'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround.git'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rking/ag.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -96,12 +96,14 @@ let g:ctrlp_clear_cache_on_exit=0
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:ack_use_dispatch = 0
-let g:ackhighlight = 1
-let g:ackpreview = 1
-let g:ack_default_options =
-            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
-            \ "--ignore-dir node_modules"
+" let g:ack_use_dispatch = 0
+" let g:ackhighlight = 1
+" let g:ackpreview = 1
+" let g:ack_default_options =
+            " \ " -s -H --nocolor --nogroup --column --smart-case --follow"
+            " \ "--ignore-dir node_modules"
+
+let g:ag_working_path_mode="r"
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_blockBindings = "true"
