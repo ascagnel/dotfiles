@@ -29,7 +29,8 @@ Bundle 'jlanzarotta/bufexplorer'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround.git'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'monokrome/vim-testdrive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -89,21 +90,21 @@ let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_root_markers=['dibs','.git']
+let g:ctrlp_root_markers=['package.json','.git']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
 let g:ctrlp_clear_cache_on_exit=0
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" let g:ack_use_dispatch = 0
-" let g:ackhighlight = 1
-" let g:ackpreview = 1
-" let g:ack_default_options =
-            " \ " -s -H --nocolor --nogroup --column --smart-case --follow"
-            " \ "--ignore-dir node_modules"
+let g:ack_use_dispatch = 0
+let g:ackhighlight = 1
+let g:ackpreview = 1
+let g:ack_default_options =
+            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
+            \ "--ignore-dir node_modules"
 
-let g:ag_working_path_mode="r"
+" let g:ag_working_path_mode="r"
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_blockBindings = "true"
@@ -134,6 +135,10 @@ augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+let g:testdrive#detect = 1
+let g:testdrive#use_dispatch = 1
+let g:testdrive#always_open_results = 1
 
 set secure
 
