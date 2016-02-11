@@ -10,11 +10,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
+"Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'othree/es.next.syntax.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mklabs/vim-backbone.git'
@@ -23,7 +24,6 @@ Plugin 'mhinz/vim-startify'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
-Plugin 'scrooloose/syntastic.git'
 Plugin 'tpope/vim-fugitive'
 Bundle 'jlanzarotta/bufexplorer'
 Plugin 'easymotion/vim-easymotion'
@@ -31,8 +31,17 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'monokrome/vim-testdrive'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'gregsexton/gitv'
+Plugin 'bling/vim-airline'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set foldmethod=indent
 
 set cul
 hi CursorLine term=none cterm=none ctermbg=234
@@ -79,6 +88,8 @@ set eol
 set nolist
 
 set wildignore+=**/node_modules
+set wildignore+=**/public
+set wildignore+=**/npmtmp
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -95,16 +106,18 @@ let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
 let g:ctrlp_clear_cache_on_exit=0
 
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
-let g:ack_use_dispatch = 0
+let g:ack_use_dispatch = 1
 let g:ackhighlight = 1
 let g:ackpreview = 1
 let g:ack_default_options =
             \ " -s -H --nocolor --nogroup --column --smart-case --follow"
-            \ "--ignore-dir node_modules"
+            \ "--ignore-dir {node_modules,public,npmrc}"
 
 " let g:ag_working_path_mode="r"
+
+let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_blockBindings = "true"
@@ -139,6 +152,33 @@ augroup END " }
 let g:testdrive#detect = 1
 let g:testdrive#use_dispatch = 1
 let g:testdrive#always_open_results = 1
+
+" rainbow parens
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" airline
+let g:airline_powerline_fonts = 1
 
 set secure
 
