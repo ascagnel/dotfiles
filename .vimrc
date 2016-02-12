@@ -153,6 +153,12 @@ let g:testdrive#detect = 1
 let g:testdrive#use_dispatch = 1
 let g:testdrive#always_open_results = 1
 
+" mouse stuff
+set mouse+=a
+if &term =~ '^screen'
+    set ttymouse=xterm2
+endif
+
 " rainbow parens
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
