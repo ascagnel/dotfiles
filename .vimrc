@@ -35,13 +35,15 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gregsexton/gitv'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'edkolev/tmuxline.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set foldmethod=indent
+"set foldmethod=indent
 
 set cul
 hi CursorLine term=none cterm=none ctermbg=234
@@ -89,12 +91,15 @@ set nolist
 
 set wildignore+=**/node_modules
 set wildignore+=**/public
-set wildignore+=**/npmtmp
+set wildignore+=**/\.npmtmp
+set wildignore+=**/public
+set wildignore+=**/coverage
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ 'PrtClearCache()': ['<F6>'],
     \ }
 
 let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
