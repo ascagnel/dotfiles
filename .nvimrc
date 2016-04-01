@@ -1,4 +1,3 @@
-set nocompatible              " be iMproved, required
 set hidden
 filetype off                  " required
 
@@ -7,12 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
-"Plugin 'othree/javascript-libraries-syntax.vim'
-"Plugin 'othree/es.next.syntax.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -33,22 +29,23 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'monokrome/vim-testdrive'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/deoplete.nvim'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'Shougo/neocomplcache.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gregsexton/gitv'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
-Plugin 'edkolev/tmuxline.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"set foldmethod=indent
-
 set cul
-hi CursorLine term=none cterm=none ctermbg=234
+"hi CursorLine term=none cterm=none ctermbg=234
 "set cursorline
+set background="light"
 
 set clipboard+=unnamed
 
