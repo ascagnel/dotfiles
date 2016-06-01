@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
-Plugin 'othree/yajs.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -29,12 +28,14 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'monokrome/vim-testdrive'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'airblade/vim-rooter'
+Plugin 'juanpabloaj/vim-istanbul'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-coverage'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'Shougo/deoplete.nvim'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'Shougo/neocomplcache.vim'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-easytags'
@@ -50,12 +51,15 @@ set background="light"
 set clipboard+=unnamed
 
 syntax on
+set foldmethod=syntax
 set shiftwidth=4
 set tabstop=4
 
 if has("autocmd")
 	filetype plugin indent on
 endif
+
+colorscheme Monokai
 
 set relativenumber
 set showcmd
@@ -91,7 +95,8 @@ set wildignore+=**/node_modules
 set wildignore+=**/public
 set wildignore+=**/\.npmtmp
 set wildignore+=**/public
-set wildignore+=**/coverage
+set wildignore+=**/npmtmp
+set wildignore+=*/dist
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {

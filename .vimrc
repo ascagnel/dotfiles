@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
@@ -33,7 +33,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'monokrome/vim-testdrive'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'juanpabloaj/vim-istanbul'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gregsexton/gitv'
 Plugin 'vim-airline/vim-airline'
@@ -72,6 +73,7 @@ set cmdheight=2
 set autoread
 set autochdir
 set exrc
+set nowrap " auto-line-wrapping can die in a fire
 
 set backupdir=~/.vim/files/backupdir//
 set directory=~/.vim/files/swapdir//
@@ -157,7 +159,7 @@ augroup END " }
 
 let g:testdrive#detect = 1
 let g:testdrive#use_dispatch = 1
-let g:testdrive#always_open_results = 1
+let g:testdrive#always_open_results = 0
 
 " mouse stuff
 set mouse+=a
