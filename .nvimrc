@@ -21,7 +21,8 @@ Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fugitive'
-Bundle 'jlanzarotta/bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'scrooloose/syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround.git'
 Plugin 'terryma/vim-multiple-cursors'
@@ -32,14 +33,11 @@ Plugin 'airblade/vim-rooter'
 Plugin 'juanpabloaj/vim-istanbul'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-coverage'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'Shougo/deoplete.nvim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
-Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -96,7 +94,9 @@ set wildignore+=**/public
 set wildignore+=**/\.npmtmp
 set wildignore+=**/public
 set wildignore+=**/npmtmp
-set wildignore+=*/dist
+set wildignore+=**/dist
+set wildignore+=**/.npmtmp
+set wildignore+=**/coverage
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -146,11 +146,12 @@ let g:startify_session_delete_buffers = 1
 let g:startify_session_persistence    = 1
 
 function! ESLintArgs()
-    let rules = findfile('index.js', '.;~/projects/eslint-config-1stdibs')
+    let rules = findfile('.eslintrc')
     return rules != '' ? '--rulesdir ' . shellescape(fnamemodify(rules, ':p:h')) : ''
 endfunction
 
 autocmd FileType javascript let b:syntastic_javascript_eslint_args = ESLintArgs()
+autocmd WinEnter <buffer> :view
 
 augroup reload_vimrc " {
     autocmd!
@@ -193,6 +194,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 set secure
 
@@ -202,5 +204,16 @@ nmap ]c <Plug>GitGutterNextHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
+
+nmap <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>W <Plug>(easymotion-bd-W)
+nmap <Leader>t <Plug>(easymotion-bd-t)
+nmap <Leader>T <Plug>(easymotion-bd-T)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>/ <Plug>(easymotion-bd-n)
+nmap <Leader>? <Plug>(easymotion-bd-N)
+nmap <Leader>s <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
