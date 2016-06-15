@@ -38,6 +38,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-obsession'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -146,7 +147,7 @@ let g:startify_session_delete_buffers = 1
 let g:startify_session_persistence    = 1
 
 function! ESLintArgs()
-    let rules = findfile('.eslintrc')
+    let rules = findfile('~/.eslintrc')
     return rules != '' ? '--rulesdir ' . shellescape(fnamemodify(rules, ':p:h')) : ''
 endfunction
 
