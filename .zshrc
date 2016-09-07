@@ -5,7 +5,7 @@ export ZSH=/Users/andrew.scagnelli/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="sunrise"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -65,9 +65,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='mvim -v'
+   export EDITOR='nvim -u ~/.nvimrc'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='mvim -v'
 # fi
 
 # Compilation flags
@@ -90,6 +90,7 @@ export XDG_CACHE_HOME="~/Library/Caches"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
+alias gi="git"
 #alias vim="mvim -v"
 
 #function powerline_precmd() {
@@ -108,5 +109,7 @@ alias vim="nvim -u ~/.nvimrc"
 #if [ "$TERM" != "linux" ]; then
 #  install_powerline_precmd
 #fi
+
+source /opt/boxen/homebrew/share/zsh/site-functions/_aws
 
 DEFAULT_USER='andrew.scagnelli'

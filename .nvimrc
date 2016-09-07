@@ -39,18 +39,21 @@ Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'Konfekt/FastFold'
+Plugin 'terryma/vim-smooth-scroll'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 set cul
 "hi CursorLine term=none cterm=none ctermbg=234
 "set cursorline
-set background="light"
+set background="dark"
 
 set clipboard+=unnamed
 
 syntax on
-set foldmethod=syntax
+set foldmethod=manual
 set shiftwidth=4
 set tabstop=4
 
@@ -58,7 +61,7 @@ if has("autocmd")
 	filetype plugin indent on
 endif
 
-colorscheme Monokai
+colorscheme smyck
 
 set relativenumber
 set showcmd
@@ -147,7 +150,8 @@ let g:startify_session_delete_buffers = 1
 let g:startify_session_persistence    = 1
 
 function! ESLintArgs()
-    let rules = findfile('~/.eslintrc')
+    "let rules = findfile('~/.eslintrc')
+    let rules = findfile('/opt/boxen/homebrew/Cellar/node4-lts/4.2.3/lib/node_modules/dibslint/configs/react.js')
     return rules != '' ? '--rulesdir ' . shellescape(fnamemodify(rules, ':p:h')) : ''
 endfunction
 
@@ -196,6 +200,11 @@ au Syntax * RainbowParenthesesLoadBraces
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#show_close_button = 0
 
 set secure
 
@@ -216,5 +225,7 @@ nmap <Leader>/ <Plug>(easymotion-bd-n)
 nmap <Leader>? <Plug>(easymotion-bd-N)
 nmap <Leader>s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
+
+let g:deoplete#enable_at_startup = 1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
