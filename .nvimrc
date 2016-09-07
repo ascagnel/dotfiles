@@ -45,12 +45,14 @@ Plugin 'terryma/vim-smooth-scroll'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+if filereadable($HOME . "/.nvimrc_local")
+    so ~/.nvimrc_local
+endif
+
 set cul
 "hi CursorLine term=none cterm=none ctermbg=234
 "set cursorline
 set background="dark"
-
-set clipboard+=unnamed
 
 syntax on
 set foldmethod=manual
@@ -156,7 +158,6 @@ function! ESLintArgs()
 endfunction
 
 autocmd FileType javascript let b:syntastic_javascript_eslint_args = ESLintArgs()
-autocmd WinEnter <buffer> :view
 
 augroup reload_vimrc " {
     autocmd!
@@ -229,3 +230,4 @@ let g:EasyMotion_smartcase = 1
 let g:deoplete#enable_at_startup = 1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
