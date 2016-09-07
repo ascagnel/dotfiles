@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/andrew.scagnelli/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -56,8 +56,6 @@ plugins=(git osx npm sublime)
 export PATH="bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/boxen/bin:./node_modules/.bin:/Users/andrew.scagnelli/.bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -110,6 +108,5 @@ alias gi="git"
 #  install_powerline_precmd
 #fi
 
-source /opt/boxen/homebrew/share/zsh/site-functions/_aws
+[ -f .zsh_local ] && source .zsh_local
 
-DEFAULT_USER='andrew.scagnelli'
