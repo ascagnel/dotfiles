@@ -42,6 +42,12 @@ Plugin 'tpope/vim-obsession'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'Konfekt/FastFold'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'joonty/vdebug'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'jceb/vim-orgmode'
+" Plugin 'grassdog/tagman.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -103,6 +109,11 @@ set wildignore+=**/npmtmp
 set wildignore+=**/dist
 set wildignore+=**/.npmtmp
 set wildignore+=**/coverage
+
+map! jk <Esc>
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -229,5 +240,10 @@ let g:EasyMotion_smartcase = 1
 
 let g:deoplete#enable_at_startup = 1
 
+let g:tagman_auto_generate = 1
+" let g:tagman_ctags_binary = 'ctags -a ./.git/tags -R ./src'
+let g:tagman_ignores = ['node_modules', 'dist']
+
+set tags=./tags;,tags;
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
