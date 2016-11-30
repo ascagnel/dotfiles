@@ -26,7 +26,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround.git'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mileszs/ack.vim'
 Plugin 'monokrome/vim-testdrive'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'airblade/vim-rooter'
@@ -39,14 +38,15 @@ Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'Konfekt/FastFold'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'joonty/vdebug'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'ternjs/tern_for_vim'
 Plugin 'jceb/vim-orgmode'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'pbogut/deoplete-padawan'
+Plugin 'ervandew/supertab'
 " Plugin 'grassdog/tagman.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -177,7 +177,7 @@ augroup END " }
 
 let g:testdrive#detect = 1
 let g:testdrive#use_dispatch = 1
-let g:testdrive#always_open_results = 1
+let g:testdrive#always_open_results = 0
 
 " mouse stuff
 set mouse+=a
@@ -243,6 +243,8 @@ let g:deoplete#enable_at_startup = 1
 let g:tagman_auto_generate = 1
 " let g:tagman_ctags_binary = 'ctags -a ./.git/tags -R ./src'
 let g:tagman_ignores = ['node_modules', 'dist']
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 set tags=./tags;,tags;
 set runtimepath^=~/.vim/bundle/ctrlp.vim
