@@ -89,7 +89,6 @@ export XDG_CACHE_HOME="~/Library/Caches"
 alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
 alias gi="git"
-#alias vim="mvim -v"
 
 #function powerline_precmd() {
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
@@ -108,5 +107,10 @@ alias gi="git"
 #  install_powerline_precmd
 #fi
 
-[ -f .zsh_local ] && source .zsh_local
+[ -f .zshrc_local ] && source .zshrc_local
+export PATH=~/.npm-global/bin:$PATH
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export NVM_DIR="/Users/andrew.scagnelli/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

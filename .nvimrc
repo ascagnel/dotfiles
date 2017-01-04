@@ -47,6 +47,10 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'pbogut/deoplete-padawan'
 Plugin 'ervandew/supertab'
+Plugin 'vimwiki/vimwiki'
+Plugin 'jparise/vim-graphql'
+Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'amix/open_file_under_cursor.vim'
 " Plugin 'grassdog/tagman.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -146,6 +150,9 @@ let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_blockBindings = "true"
+
+" let g:syntastic_twig_twiglint_exec = "php"
+" let g:syntastic_twig_twiglint_exe = "php /path/to/twig-lint.phar"
 
 let g:startify_list_order = [
             \ ['  Sessions '],  'sessions',
