@@ -9,71 +9,57 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mklabs/vim-backbone.git'
-Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'mhinz/vim-startify'
-Plugin 'ryanss/vim-hackernews'
 Plugin 'evidens/vim-twig.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'scrooloose/syntastic'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround.git'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'monokrome/vim-testdrive'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'airblade/vim-rooter'
-Plugin 'juanpabloaj/vim-istanbul'
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-coverage'
-Plugin 'Shougo/neocomplcache.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
 Plugin 'Konfekt/FastFold'
-Plugin 'terryma/vim-smooth-scroll'
 Plugin 'joonty/vdebug'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'jceb/vim-orgmode'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'pbogut/deoplete-padawan'
 Plugin 'ervandew/supertab'
-Plugin 'vimwiki/vimwiki'
 Plugin 'jparise/vim-graphql'
 Plugin 'yuttie/comfortable-motion.vim'
-Plugin 'amix/open_file_under_cursor.vim'
-" Plugin 'grassdog/tagman.vim'
-call vundle#end()            " required
-filetype plugin indent on    " required
 
+" If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
     so ~/.nvimrc_local
 endif
 
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
 set cul
-"hi CursorLine term=none cterm=none ctermbg=234
+hi CursorLine term=none cterm=none ctermbg=255
 "set cursorline
 set background="dark"
 
 syntax on
-set foldmethod=manual
+set foldmethod=syntax
 set shiftwidth=4
 set tabstop=4
 
 if has("autocmd")
 	filetype plugin indent on
 endif
-
-colorscheme smyck
 
 set relativenumber
 set showcmd
@@ -146,6 +132,7 @@ let g:ack_default_options =
 
 " let g:ag_working_path_mode="r"
 
+let g:javascript_plugin_jsdoc = 1
 let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:syntastic_javascript_checkers = [ 'eslint' ]
