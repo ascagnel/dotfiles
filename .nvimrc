@@ -33,6 +33,8 @@ Plugin 'joonty/vdebug'
 Plugin 'ervandew/supertab'
 Plugin 'jparise/vim-graphql'
 Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'w0rp/ale'
 
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
@@ -109,7 +111,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ 'PrtClearCache()': ['<F6>'],
+    \ 'PrtClearCache()': ['<F6>', '<c-r>'],
     \ }
 
 let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
