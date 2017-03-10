@@ -84,7 +84,7 @@ set undodir=~/.vim/files/undodir//
 set laststatus=2
 
 " Format the status line
-set statusline=\ %m%f\ %{fugitive#statusline()}\ \(\%l,%v\)
+set statusline=\ %m%f\ %{fugitive#statusline()}\ %{ALEGetStatusLine()}\ \(\%l,%v\)
 set number
 
 set expandtab
@@ -137,12 +137,6 @@ let g:ack_default_options =
 let g:javascript_plugin_jsdoc = 1
 let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-let g:syntastic_javascript_eslint_blockBindings = "true"
-
-" let g:syntastic_twig_twiglint_exec = "php"
-" let g:syntastic_twig_twiglint_exe = "php /path/to/twig-lint.phar"
-
 let g:startify_list_order = [
             \ ['  Sessions '],  'sessions',
             \ ['  Bookmarks '], 'bookmarks',
@@ -157,14 +151,6 @@ let g:startify_files_number           = 8
 let g:startify_session_autoload       = 1
 let g:startify_session_delete_buffers = 1
 let g:startify_session_persistence    = 1
-
-function! ESLintArgs()
-    "let rules = findfile('~/.eslintrc')
-    let rules = findfile('/opt/boxen/homebrew/Cellar/node4-lts/4.2.3/lib/node_modules/dibslint/configs/react.js')
-    return rules != '' ? '--rulesdir ' . shellescape(fnamemodify(rules, ':p:h')) : ''
-endfunction
-
-autocmd FileType javascript let b:syntastic_javascript_eslint_args = ESLintArgs()
 
 augroup reload_vimrc " {
     autocmd!
@@ -204,6 +190,8 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+colorscheme Tomorrow-Night-Eighties
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -245,3 +233,11 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 set tags=./tags;,tags;
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+let g:ale_linters = {'jsx': ['eslint'], 'javascript': ['eslint'], 'js': ['eslint']}
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_javascript_eslint_options = '--env es6 --env jest'
+
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
