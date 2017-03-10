@@ -35,6 +35,7 @@ Plugin 'jparise/vim-graphql'
 Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'w0rp/ale'
+Plugin 'flazz/vim-colorschemes'
 
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
