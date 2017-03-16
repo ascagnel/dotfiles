@@ -36,6 +36,8 @@ Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'w0rp/ale'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-vinegar'
 
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
@@ -57,6 +59,7 @@ set background="dark"
 
 syntax on
 set foldmethod=syntax
+set foldlevel=99
 set shiftwidth=4
 set tabstop=4
 
@@ -152,6 +155,9 @@ let g:startify_files_number           = 8
 let g:startify_session_autoload       = 1
 let g:startify_session_delete_buffers = 1
 let g:startify_session_persistence    = 1
+let g:startify_session_savecmds = [
+            \ 'Obsession'
+            \ ]
 
 augroup reload_vimrc " {
     autocmd!
