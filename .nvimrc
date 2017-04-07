@@ -38,7 +38,8 @@ Plugin 'w0rp/ale'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-vinegar'
-
+Plugin 'ericpruitt/tmux.vim'
+Plugin 'ryanss/vim-hackernews'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
     so ~/.nvimrc_local
@@ -60,6 +61,7 @@ set background="dark"
 syntax on
 set foldmethod=syntax
 set foldlevel=99
+let v:foldlevel=99
 set shiftwidth=4
 set tabstop=4
 
@@ -142,7 +144,6 @@ let g:javascript_plugin_jsdoc = 1
 let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:startify_list_order = [
-            \ ['  Sessions '],  'sessions',
             \ ['  Bookmarks '], 'bookmarks',
             \ ['  MRU '],       'files',
             \ ['  MRU DIR '],   'dir',
@@ -209,6 +210,8 @@ let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
+let g:flow#autoclose = 1
+
 set secure
 
 nmap [c <Plug>GitGutterPrevHunk
@@ -240,9 +243,9 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 set tags=./tags;,tags;
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-let g:ale_linters = {'jsx': ['eslint'], 'javascript': ['eslint'], 'js': ['eslint']}
+let g:ale_linters = {'jsx': ['eslint', 'flow'], 'javascript': ['eslint', 'flow'], 'js': ['eslint', 'flow']}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let g:ale_javascript_eslint_options = '--env es6 --env jest'
+let g:ale_javascript_eslint_options = '--env es6 --env jest --rule "sourceType: module"'
 
 augroup FiletypeGroup
     autocmd!
