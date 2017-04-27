@@ -15,7 +15,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
-Plugin 'evidens/vim-twig.git'
+Plugin 'nelsyeung/twig.vim'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jlanzarotta/bufexplorer'
@@ -40,6 +40,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ericpruitt/tmux.vim'
 Plugin 'ryanss/vim-hackernews'
+Plugin 'suan/vim-instant-markdown'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local")
     so ~/.nvimrc_local
