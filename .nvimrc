@@ -1,5 +1,5 @@
 set hidden
-filetype off                  " required
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,21 +9,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'dracula/vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
-Plugin 'nelsyeung/twig.vim'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'tpope/vim-surround.git'
-Plugin 'monokrome/vim-testdrive'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'airblade/vim-rooter'
-Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'plasticboy/vim-markdown'
@@ -32,31 +23,23 @@ Plugin 'Konfekt/FastFold'
 Plugin 'joonty/vdebug'
 Plugin 'ervandew/supertab'
 Plugin 'jparise/vim-graphql'
-Plugin 'yuttie/comfortable-motion.vim'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'w0rp/ale'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-vinegar'
-Plugin 'ericpruitt/tmux.vim'
 Plugin 'ryanss/vim-hackernews'
-Plugin 'suan/vim-instant-markdown'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'evidens/vim-twig'
 " If a system-specific file is present, load that before ending vundle
-if filereadable($HOME . "/.nvimrc_local")
+if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
 endif
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+colorscheme Tomorrow-Night-Eighties
 
-set cul
-hi CursorLine term=none cterm=none ctermbg=255
-"set cursorline
+"set cul
+"hi CursorLine term=none cterm=none ctermbg=255
 set background="dark"
 
 syntax on
@@ -102,17 +85,10 @@ set nolist
 
 set wildignore+=**/node_modules
 set wildignore+=**/public
-set wildignore+=**/\.npmtmp
-set wildignore+=**/public
-set wildignore+=**/npmtmp
 set wildignore+=**/dist
-set wildignore+=**/.npmtmp
 set wildignore+=**/coverage
 
 map! jk <Esc>
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -131,15 +107,6 @@ let g:ctrlp_use_caching=5
 let g:ctrlp_clear_cache_on_exit=0
 
 let g:jsx_ext_required = 1 " Allow JSX in normal JS files
-
-let g:ack_use_dispatch = 1
-let g:ackhighlight = 1
-let g:ackpreview = 1
-let g:ack_default_options =
-            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
-            \ "--ignore-dir {node_modules,public,npmrc}"
-
-" let g:ag_working_path_mode="r"
 
 let g:javascript_plugin_jsdoc = 1
 let g:used_javascript_libs = 'underscore,backbone,react,flux'
@@ -176,32 +143,6 @@ if &term =~ '^screen'
     set ttymouse=xterm2
 endif
 
-" rainbow parens
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-colorscheme Tomorrow-Night-Eighties
-
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -222,26 +163,8 @@ nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
-nmap <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>W <Plug>(easymotion-bd-W)
-nmap <Leader>t <Plug>(easymotion-bd-t)
-nmap <Leader>T <Plug>(easymotion-bd-T)
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
-nmap <Leader>/ <Plug>(easymotion-bd-n)
-nmap <Leader>? <Plug>(easymotion-bd-N)
-nmap <Leader>s <Plug>(easymotion-s)
-let g:EasyMotion_smartcase = 1
-
 let g:deoplete#enable_at_startup = 1
 
-let g:tagman_auto_generate = 1
-" let g:tagman_ctags_binary = 'ctags -a ./.git/tags -R ./src'
-let g:tagman_ignores = ['node_modules', 'dist']
-
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-set tags=./tags;,tags;
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ale_linters = {'jsx': ['eslint', 'flow'], 'javascript': ['eslint', 'flow'], 'js': ['eslint', 'flow']}
@@ -252,3 +175,7 @@ augroup FiletypeGroup
     autocmd!
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
+
+if filereadable($HOME . "/.nvimrc_local")
+    so ~/.nvimrc_local
+endif
