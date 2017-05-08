@@ -37,6 +37,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 colorscheme Tomorrow-Night-Eighties
+highlight Normal ctermbg=none
 
 "set cul
 "hi CursorLine term=none cterm=none ctermbg=255
@@ -179,3 +180,4 @@ augroup END
 if filereadable($HOME . "/.nvimrc_local")
     so ~/.nvimrc_local
 endif
+let macvim_skip_colorscheme=1
