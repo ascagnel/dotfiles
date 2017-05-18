@@ -12,22 +12,17 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
-Plugin 'tpope/vim-dispatch.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-rooter'
 Plugin 'bling/vim-airline'
-Plugin 'xolox/vim-misc'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
 Plugin 'Konfekt/FastFold'
 Plugin 'joonty/vdebug'
 Plugin 'ervandew/supertab'
 Plugin 'jparise/vim-graphql'
 Plugin 'w0rp/ale'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'evidens/vim-twig'
+Plugin 'airblade/vim-rooter'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
@@ -75,7 +70,7 @@ set undodir=~/.vim/files/undodir//
 set laststatus=2
 
 " Format the status line
-set statusline=\ %m%f\ %{fugitive#statusline()}\ %{ALEGetStatusLine()}\ \(\%l,%v\)
+set statusline=\ %m%f\ %{ALEGetStatusLine()}\ \(\%l,%v\)
 set number
 
 set expandtab
@@ -90,6 +85,7 @@ set wildignore+=**/dist
 set wildignore+=**/coverage
 
 map! jk <Esc>
+map! kj <Esc>
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -102,7 +98,7 @@ let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_root_markers=['package.json','.git']
+let g:ctrlp_root_markers=['package.json','.git', 'dibs']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
 let g:ctrlp_clear_cache_on_exit=0
