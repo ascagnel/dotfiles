@@ -21,8 +21,8 @@ Plugin 'jparise/vim-graphql'
 Plugin 'w0rp/ale'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'evidens/vim-twig'
 Plugin 'airblade/vim-rooter'
+Plugin 'lepture/vim-jinja'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
@@ -173,7 +173,12 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
+
 if filereadable($HOME . "/.nvimrc_local")
     so ~/.nvimrc_local
 endif
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guifg=grey ctermfg=grey
 let macvim_skip_colorscheme=1
+
