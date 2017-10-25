@@ -53,9 +53,7 @@ plugins=(git osx npm sublime yarn colored-man-pages vi-mode node-modules-path)
 
 # User configuration
 
-export NPM_CONFIG_PREFIX=${HOME}/.npm-global
-export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:${HOME}/.npm-global/bin:${HOME}/.yarn-cache/.global/node_modules/.bin
-export PATH=$(yarn bin):$PATH
+export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,6 +93,9 @@ alias gi="git"
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
 #}
 
+alias ag='ag --path-to-agignore ~/.ignore'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 #function install_powerline_precmd() {
 #  for s in "${precmd_functions[@]}"; do
 #    if [ "$s" = "powerline_precmd" ]; then
@@ -112,9 +113,11 @@ alias gi="git"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export NVM_DIR="${HOME}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=$PATH:$(yarn global bin)
