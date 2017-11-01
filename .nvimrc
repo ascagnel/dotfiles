@@ -23,6 +23,9 @@ Plugin 'ryanss/vim-hackernews'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-rooter'
 Plugin 'lepture/vim-jinja'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'scrooloose/nerdtree'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
@@ -36,6 +39,7 @@ highlight Normal ctermbg=none
 
 "set cul
 "hi CursorLine term=none cterm=none ctermbg=255
+set cursorline
 set background="dark"
 
 syntax on
@@ -83,9 +87,10 @@ set wildignore+=**/node_modules
 set wildignore+=**/public
 set wildignore+=**/dist
 set wildignore+=**/coverage
+set wildignore+=**/__generated__
+set wildignore+=**/__snapshots__
 
 map! jk <Esc>
-map! kj <Esc>
 
 " CtrlP -- default new tab
 let g:ctrlp_prompt_mappings = {
@@ -159,6 +164,7 @@ nmap ]c <Plug>GitGutterNextHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
+nmap <Leader>f <Plug>Files<CR>
 
 let g:deoplete#enable_at_startup = 1
 
