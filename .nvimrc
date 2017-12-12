@@ -25,7 +25,7 @@ Plugin 'airblade/vim-rooter'
 Plugin 'lepture/vim-jinja'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'sbdchd/neoformat'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
@@ -165,6 +165,7 @@ nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
 nmap <Leader>f <Plug>Files<CR>
+nmap <Leader>f <Plug>FZF
 
 let g:deoplete#enable_at_startup = 1
 
@@ -188,3 +189,9 @@ hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guifg=grey ctermfg=grey
 let macvim_skip_colorscheme=1
 
+let g:prettier#exec_cmd_path = "yarn prettier"
+
+" augroup fmt
+  " autocmd!
+  " autocmd BufWritePre * undojoin | Neoformat
+" augroup END

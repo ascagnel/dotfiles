@@ -54,6 +54,7 @@ plugins=(git osx npm sublime yarn colored-man-pages vi-mode node-modules-path)
 # User configuration
 
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
+export PATH="/opt/boxen/homebrew/opt/node@6/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,7 +118,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
 export PATH=$PATH:$(yarn global bin)
