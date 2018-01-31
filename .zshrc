@@ -89,6 +89,7 @@ export XDG_CACHE_HOME="~/Library/Caches"
 alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
 alias gi="git st"
+alias ll="ls -al"
 
 #function powerline_precmd() {
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
