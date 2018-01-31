@@ -124,9 +124,10 @@ export PATH=$PATH:$(yarn global bin)
 export PATH="/opt/boxen/homebrew/opt/node@8/bin:$PATH"
 
 export DEFAULT_USER=`id -un`
+export HOSTNAME=`hostname -s`
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+      prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@$HOSTNAME"
   fi
 }
