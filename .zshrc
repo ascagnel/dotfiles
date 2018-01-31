@@ -122,3 +122,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #
 export PATH=$PATH:$(yarn global bin)
 export PATH="/opt/boxen/homebrew/opt/node@8/bin:$PATH"
+
+export DEFAULT_USER=`id -un`
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
