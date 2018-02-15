@@ -7,6 +7,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive.git'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -25,7 +26,7 @@ Plugin 'airblade/vim-rooter'
 Plugin 'lepture/vim-jinja'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'sbdchd/neoformat'
 " If a system-specific file is present, load that before ending vundle
 if filereadable($HOME . "/.nvimrc_local_packages")
     so ~/.nvimrc_local
@@ -87,7 +88,8 @@ set wildignore+=**/node_modules
 set wildignore+=**/public
 set wildignore+=**/dist
 set wildignore+=**/coverage
-set wildignore+=**/*.graphql.js
+set wildignore+=**/__generated__
+set wildignore+=**/__snapshots__
 
 map! jk <Esc>
 
@@ -164,12 +166,13 @@ nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
 nmap <Leader>f <Plug>Files<CR>
+nmap <Leader>f <Plug>FZF
 
 let g:deoplete#enable_at_startup = 1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-let g:ale_linters = {'jsx': ['eslint', 'flow'], 'javascript': ['eslint', 'flow'], 'js': ['eslint', 'flow']}
+let g:ale_linters = {'jsx': ['eslint', 'flow'], 'javascript': ['prettier', 'flow'], 'js': ['eslint', 'flow']}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_javascript_eslint_options = '--env es6 --env jest --rule "sourceType: module"'
 
@@ -187,3 +190,9 @@ hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guifg=grey ctermfg=grey
 let macvim_skip_colorscheme=1
 
+let g:prettier#exec_cmd_path = "yarn prettier"
+
+" augroup fmt
+  " autocmd!
+  " autocmd BufWritePre * undojoin | Neoformat
+" augroup END
