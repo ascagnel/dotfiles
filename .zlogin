@@ -1,8 +1,8 @@
-if [[ -n `command -v fortune` ]]; then
+if [[ -x "$(command -v fortune)" ]]; then
     echo ""
     fortune
 fi
-if [[ -n `command -v tmux` ]]; then
+if [[ -x "$(command -v tmux)" ]]; then
     echo ""
     tmux list-sessions
 fi
