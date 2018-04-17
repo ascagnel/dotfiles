@@ -1,9 +1,8 @@
 if [[ -x "$(command -v fortune)" ]]; then
-    echo ""
     fortune
+    echo ""
 fi
 if [[ -x "$(command -v tmux)" ]]; then
-    echo ""
     tmux list-sessions
+    echo ""
 fi
-echo ""
