@@ -5,7 +5,7 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,7 +95,6 @@ alias ll="ls -al"
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
 #}
 
-alias ag='ag --path-to-agignore ~/.ignore'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 #function install_powerline_precmd() {
