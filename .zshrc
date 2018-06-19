@@ -54,7 +54,8 @@ plugins=(git osx npm sublime yarn colored-man-pages vi-mode node-modules-path)
 # User configuration
 
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
-export PATH="/opt/boxen/homebrew/opt/node@6/bin:$PATH"
+export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
+export PATH=$PATH:$(yarn global bin)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,9 +120,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [[ -f /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 #
-export PATH=$PATH:$(yarn global bin)
-export PATH="/opt/boxen/homebrew/opt/node@8/bin:$PATH"
-
 export DEFAULT_USER=`id -un`
 export HOSTNAME=`hostname -s`
 

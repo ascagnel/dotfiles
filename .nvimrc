@@ -22,6 +22,8 @@ Plugin 'lepture/vim-jinja'
 Plugin 'sbdchd/neoformat'
 Plugin 'mileszs/ack.vim'
 Plugin 'bfontaine/Brewfile.vim'
+Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -49,6 +51,8 @@ set cmdheight=2
 set autoread
 set autochdir
 set exrc
+
+au FocusGained,BufEnter * :checktime
 
 set backupdir=~/.vim/files/backupdir//
 set directory=~/.vim/files/swapdir//
@@ -139,6 +143,7 @@ if &term =~ '^screen'
 endif
 
 let g:flow#autoclose = 1
+let g:javascript_plugin_flow = 1
 
 set secure
 
@@ -162,7 +167,7 @@ augroup END
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
 
 if filereadable($HOME . "/.nvimrc_local")
-    so ~/.nvimrc_local
+    source $HOME/.nvimrc_local
 endif
 
 if executable('ag')
