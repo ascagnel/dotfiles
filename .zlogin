@@ -1,9 +1,12 @@
+echo ""
+
 if [[ -x "$(command -v fortune)" ]]; then
     fortune
     echo ""
 fi
 
 if [[ -x "$(command -v tmux)" ]]; then
+    echo "Active tmux sessions:"
     tmux list-sessions | sed 's/:.*//'
     echo ""
 fi
