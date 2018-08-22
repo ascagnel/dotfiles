@@ -19,3 +19,4 @@ brew "the_silver_searcher"
 brew "tmux", args: ["HEAD"]
 brew "wget"
 brew "yarn", args: ["without-node"]
+brew "trash"
