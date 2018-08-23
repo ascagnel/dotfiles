@@ -7,6 +7,8 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
+ZSH_TMUX_AUTOCONNECT=false
+ZSH_TMUX_AUTOSTART_ONCE=false
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -49,33 +51,16 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx sublime yarn colored-man-pages vi-mode node-modules-path)
+plugins=(git osx yarn colored-man-pages vi-mode jira tmux)
 
 # User configuration
-DEFAULT_USER=`whoami`
-
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
 export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
 export PATH=$PATH:$(yarn global bin)
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim -u ~/.nvimrc'
-# else
-#   export EDITOR='mvim -v'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
+export EDITOR='nvim -u ~/.nvimrc'
 export XDG_CONFIG_HOME="$HOME/Library/Preferences"
 export XDG_DATA_HOME="$HOME/Library"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
@@ -92,6 +77,7 @@ alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
 alias gi="git st"
 alias ll="ls -al"
+
 if hash trash 2>/dev/null; then
     alias rm="trash"
 fi
@@ -100,35 +86,13 @@ if hash rg 2>/dev/null; then
     alias grep="rg"
 fi
 
-#function powerline_precmd() {
-#    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
-#}
-
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
-#function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
-#}
-
-#if [ "$TERM" != "linux" ]; then
-#  install_powerline_precmd
-#fi
 
 [ -f .zshrc_local ] && source .zshrc_local
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/andrew.scagnelli/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
-
-#
-export DEFAULT_USER=`id -un`
+export DEFAULT_USER=`whoami`
 export HOSTNAME=`hostname -s`
 
 prompt_context() {
