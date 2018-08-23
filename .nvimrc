@@ -24,6 +24,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'bfontaine/Brewfile.vim'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'retorillo/istanbul.vim'
+Plugin 'ruanyl/coverage.vim'
+Plugin 'janko-m/vim-test'
+Plugin 'benmills/vimux'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -166,10 +170,30 @@ augroup END
 
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
 
-if filereadable($HOME . "/.nvimrc_local")
-    source $HOME/.nvimrc_local
-endif
-
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
+endif
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+let test#strategy = "neovim"
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+if filereadable($HOME . "/.nvimrc_local")
+    source $HOME/.nvimrc_local
 endif
