@@ -95,6 +95,10 @@ if hash trash 2>/dev/null; then
     alias rm="trash"
 fi
 
+if hash rg 2>/dev/null; then
+    alias grep="rg"
+fi
+
 #function powerline_precmd() {
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
 #}
