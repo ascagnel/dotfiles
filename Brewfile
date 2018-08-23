@@ -20,3 +20,14 @@ brew "tmux", args: ["HEAD"]
 brew "wget"
 brew "yarn", args: ["without-node"]
 brew "trash"
+brew "mas"
+cask "qlcolorcode"
+cask "qlmarkdown"
+cask "qlprettypatch"
+cask "qlstephen"
+cask "quicklook-json"
+mas "Screens 4", id: 1224268771
+mas "Things3", id: 904280696 
+mas "1Password", id: 443987910
+mas "ToothFairy", id: 1191449274
+mas "Pixelmator", id: 407963104 
