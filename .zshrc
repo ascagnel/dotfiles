@@ -91,6 +91,9 @@ alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
 alias gi="git st"
 alias ll="ls -al"
+if hash trash 2>/dev/null; then
+    alias rm="trash"
+fi
 
 #function powerline_precmd() {
 #    PS1="$(~/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
