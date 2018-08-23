@@ -49,9 +49,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx npm sublime yarn colored-man-pages vi-mode node-modules-path)
+plugins=(git osx sublime yarn colored-man-pages vi-mode node-modules-path)
 
 # User configuration
+DEFAULT_USER=`whoami`
 
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
 export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
