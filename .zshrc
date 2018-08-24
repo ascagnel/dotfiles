@@ -7,8 +7,6 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-ZSH_TMUX_AUTOCONNECT=false
-ZSH_TMUX_AUTOSTART_ONCE=false
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -51,7 +49,7 @@ ZSH_TMUX_AUTOSTART_ONCE=false
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx yarn colored-man-pages vi-mode jira tmux)
+plugins=(git osx yarn colored-man-pages vi-mode jira)
 
 # User configuration
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin

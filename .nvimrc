@@ -28,6 +28,7 @@ Plugin 'retorillo/istanbul.vim'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'benmills/vimux'
+Plugin 'atton/gundo.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
