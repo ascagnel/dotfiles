@@ -17,6 +17,7 @@ brew "wget"
 brew "yarn", args: ["without-node"]
 brew "trash"
 brew "mas"
+brew "w3m"
 cask "qlcolorcode"
 cask "qlmarkdown"
 cask "qlprettypatch"
