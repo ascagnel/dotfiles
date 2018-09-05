@@ -2,6 +2,7 @@ tap "homebrew/core"
 tap "homebrew/bundle"
 tap "caskroom/cask"
 tap "neovim/neovim"
+tap "AlexanderWillner/tap"
 brew "ack"
 brew "bash-completion"
 brew "ffmpeg"
@@ -23,6 +24,7 @@ cask "qlmarkdown"
 cask "qlprettypatch"
 cask "qlstephen"
 cask "quicklook-json"
+cask "things.sh"
 mas "Screens 4", id: 1224268771
 mas "Things3", id: 904280696 
 mas "1Password", id: 443987910

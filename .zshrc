@@ -75,6 +75,7 @@ alias nvim="nvim -u ~/.nvimrc"
 alias vim="nvim -u ~/.nvimrc"
 alias gi="git st"
 alias ll="ls -al"
+alias things="things.sh"
 
 if hash trash 2>/dev/null; then
     alias rm="trash"
