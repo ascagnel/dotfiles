@@ -53,6 +53,8 @@ plugins=(git osx yarn colored-man-pages vi-mode jira)
 
 # User configuration
 export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
+export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
 export PATH=$PATH:$(yarn global bin)
 
@@ -87,7 +89,7 @@ fi
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-[ -f .zshrc_local ] && source .zshrc_local
+[ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
