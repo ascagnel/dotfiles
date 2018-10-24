@@ -28,9 +28,11 @@ Plugin 'ruanyl/coverage.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'benmills/vimux'
 Plugin 'atton/gundo.vim'
+Plugin 'andymass/vim-matchup'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let g:loaded_matchit = 1
 syntax on
 colorscheme default
 set foldmethod=syntax
@@ -142,9 +144,9 @@ let g:testdrive#always_open_results = 0
 
 " mouse stuff
 set mouse+=a
-if &term =~ '^screen'
-    set ttymouse=xterm2
-endif
+" if &term =~ '^screen'
+    " set ttymouse=xterm2
+" endif
 
 let g:flow#autoclose = 1
 let g:javascript_plugin_flow = 1

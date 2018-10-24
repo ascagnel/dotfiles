@@ -27,6 +27,6 @@ cask "quicklook-json"
 cask "things.sh"
 mas "Screens 4", id: 1224268771
 mas "Things3", id: 904280696 
-mas "1Password", id: 443987910
+mas "1Password 7", id: 1333542190
 mas "ToothFairy", id: 1191449274
 mas "Pixelmator", id: 407963104 
