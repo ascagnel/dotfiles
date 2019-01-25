@@ -23,7 +23,6 @@ Plugin 'sbdchd/neoformat'
 Plugin 'mileszs/ack.vim'
 Plugin 'bfontaine/Brewfile.vim'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
-Plugin 'retorillo/istanbul.vim'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'benmills/vimux'
@@ -31,6 +30,8 @@ Plugin 'atton/gundo.vim'
 Plugin 'andymass/vim-matchup'
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set noswapfile
 
 let g:loaded_matchit = 1
 syntax on
@@ -123,6 +124,7 @@ let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:startify_list_order = [
             \ ['  Bookmarks '], 'bookmarks',
+            \ ['  Sessions'], 'sessions',
             \ ['  MRU '],       'files',
             \ ['  MRU DIR '],   'dir',
             \ ]
