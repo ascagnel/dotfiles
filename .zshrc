@@ -58,6 +58,7 @@ export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
 export PATH=$PATH:$(yarn global bin)
+export PATH=$PATH:./node_modules/.bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,6 +81,7 @@ alias vi="nvim -u ~/.nvimrc"
 alias gi="git st"
 alias ll="ls -al"
 alias things="things.sh"
+alias ta="tmux a -t "
 
 if hash trash 2>/dev/null; then
     alias rm="trash"
