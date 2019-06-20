@@ -52,17 +52,18 @@ ZSH_THEME="robbyrussell"
 plugins=(git osx yarn colored-man-pages vi-mode jira)
 
 # User configuration
-export PATH=bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
+export PATH=$PATH:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
 # export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
 export PATH=$PATH:$(yarn global bin)
 export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:${HOME}/Applications/MacVim.app/Contents/bin
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim -u ~/.nvimrc'
+export EDITOR='vim'
 export XDG_CONFIG_HOME="$HOME/Library/Preferences"
 export XDG_DATA_HOME="$HOME/Library"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
@@ -75,13 +76,17 @@ export XDG_CACHE_HOME="$HOME/Library/Caches"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias nvim="nvim -u ~/.nvimrc"
-alias vim="nvim -u ~/.nvimrc"
-alias vi="nvim -u ~/.nvimrc"
+# alias nvim="nvim -u ~/.nvimrc"
+# alias vim="nvim -u ~/.nvimrc"
+# alias vi="nvim -u ~/.nvimrc"
+alias vi="vim"
+alias st="git st"
 alias gi="git st"
 alias ll="ls -al"
 alias things="things.sh"
 alias ta="tmux a -t "
+alias tc="tmux new-session -t"
+#alias edit="open -a TextEdit"
 
 if hash trash 2>/dev/null; then
     alias rm="trash"
@@ -105,3 +110,6 @@ prompt_context() {
       prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@$HOSTNAME"
   fi
 }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
