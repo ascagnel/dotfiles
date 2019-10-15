@@ -59,11 +59,10 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
 export PATH=$PATH:$(yarn global bin)
 export PATH=$PATH:./node_modules/.bin
-export PATH=$PATH:${HOME}/Applications/MacVim.app/Contents/bin
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/Library/Preferences"
 export XDG_DATA_HOME="$HOME/Library"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
@@ -76,14 +75,8 @@ export XDG_CACHE_HOME="$HOME/Library/Caches"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias nvim="nvim -u ~/.nvimrc"
-# alias vim="nvim -u ~/.nvimrc"
-# alias vi="nvim -u ~/.nvimrc"
-alias vi="vim"
-alias st="git st"
-alias gi="git st"
+alias vi="nvim"
 alias ll="ls -al"
-alias things="things.sh"
 alias ta="tmux a -t "
 alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"
@@ -100,8 +93,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 export DEFAULT_USER=`whoami`
 export HOSTNAME=`hostname -s`
 
@@ -111,5 +102,3 @@ prompt_context() {
   fi
 }
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

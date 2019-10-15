@@ -1,40 +1,45 @@
 set hidden
+set clipboard+=unnamedplus
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'tpope/vim-obsession'
-Plugin 'ervandew/supertab'
-Plugin 'jparise/vim-graphql'
-Plugin 'w0rp/ale'
-Plugin 'airblade/vim-rooter'
-Plugin 'lepture/vim-jinja'
-Plugin 'sbdchd/neoformat'
-Plugin 'mileszs/ack.vim'
-Plugin 'bfontaine/Brewfile.vim'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
-Plugin 'ruanyl/coverage.vim'
-Plugin 'janko-m/vim-test'
-Plugin 'benmills/vimux'
-Plugin 'atton/gundo.vim'
-Plugin 'andymass/vim-matchup'
-call vundle#end()            " required
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'tpope/vim-obsession'
+Plug 'ervandew/supertab'
+Plug 'jparise/vim-graphql'
+Plug 'airblade/vim-rooter'
+Plug 'lepture/vim-jinja'
+Plug 'sbdchd/neoformat'
+Plug 'mileszs/ack.vim'
+Plug 'bfontaine/Brewfile.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'janko-m/vim-test'
+Plug 'atton/gundo.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-fugitive'
+Plug '/usr/local/opt/fzf'
+Plug 'tpope/vim-dispatch'
+Plug 'janko/vim-test'
+Plug 'leafgarland/typescript-vim'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+call plug#end()            " required
 filetype plugin indent on    " required
 
 set noswapfile
 
 let g:loaded_matchit = 1
 syntax on
-colorscheme default
+if has("gui_vimr") 
+    colorscheme base16-tomorrow-night
+endif
+
+set cursorline
 set foldmethod=syntax
 set foldlevel=99
 let v:foldlevel=99
@@ -67,20 +72,7 @@ set undodir=~/.vim/files/undodir//
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-set statusline=\ %m%f\ %{LinterStatus()}\ \(\%l,%v\)
+set statusline=\ %m%f\ \(\%l,%v\)
 set number
 
 set expandtab
@@ -106,6 +98,11 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ 'PrtClearCache()': ['<F6>', '<c-r>'],
     \ }
+let g:fzf_action = {
+  \ 'enter': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \ }
 
 let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
@@ -149,8 +146,8 @@ set mouse+=a
     " set ttymouse=xterm2
 " endif
 
-let g:flow#autoclose = 1
-let g:javascript_plugin_flow = 1
+" let g:flow#autoclose = 1
+" let g:javascript_plugin_flow = 1
 
 set secure
 
@@ -182,11 +179,13 @@ augroup fmt
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
 
-let test#strategy = "neovim"
+let test#strategy = "terminal"
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <Esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
 
 inoremap <C-h> <C-\><C-N><C-w>h
 inoremap <C-j> <C-\><C-N><C-w>j
@@ -196,6 +195,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
 
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local
