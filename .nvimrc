@@ -3,6 +3,8 @@ set clipboard+=unnamedplus
 filetype off
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'bfontaine/Brewfile.vim'
+Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -11,23 +13,26 @@ Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-rooter'
-Plug 'lepture/vim-jinja'
-Plug 'sbdchd/neoformat'
 Plug 'mileszs/ack.vim'
-Plug 'bfontaine/Brewfile.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'janko-m/vim-test'
-Plug 'atton/gundo.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-dispatch'
-Plug 'janko/vim-test'
-Plug 'leafgarland/typescript-vim'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" For Denite features
+Plug 'Shougo/denite.nvim'
 call plug#end()            " required
 filetype plugin indent on    " required
 
@@ -35,11 +40,7 @@ set noswapfile
 
 let g:loaded_matchit = 1
 syntax on
-if has("gui_vimr") 
-    colorscheme base16-tomorrow-night
-endif
 
-set cursorline
 set foldmethod=syntax
 set foldlevel=99
 let v:foldlevel=99
@@ -108,7 +109,8 @@ let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_root_markers=['package.json','.git', 'dibs']
+let g:ctrlp_root_markers=['package.json', '.git/']
+let g:rooter_patterns = ['package.json', '.git/']
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=5
 let g:ctrlp_clear_cache_on_exit=0
@@ -152,16 +154,14 @@ set mouse+=a
 set secure
 
 set updatetime=100
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
 
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterRevertHunk
-nmap <Leader>hp <Plug>GitGutterPreviewHunk
+nmap <Leader>hs <Plug>(GitGutterStageHunk)
+nmap <Leader>hr <Plug>(GitGutterRevertHunk)
+nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
 
-let g:deoplete#enable_at_startup = 1
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 augroup FiletypeGroup
     autocmd!
@@ -173,11 +173,6 @@ au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
 
 let test#strategy = "terminal"
 tnoremap <C-h> <C-\><C-N><C-w>h
@@ -196,9 +191,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <C-p> :FZF<CR>
+
 " make test commands execute using dispatch.vim
 let test#strategy = "dispatch"
 
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local
 endif
+let g:typescript_compiler_binary = 'yarn'
+let g:typescript_compiler_options = 'type:check'
