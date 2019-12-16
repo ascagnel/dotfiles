@@ -48,4 +48,8 @@ if [ ! -d "$HOME/.vim" ]; then
     mkdir $HOME/.vim/plugged
     mkdir $HOME/.vim/autoload
 fi
-
+ln -s $HOME/dotfiles/.nvimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/.nvimrc $HOME/.nvimrc
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/.zlogin $HOME/.zlogin
+ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
