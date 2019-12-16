@@ -2,7 +2,22 @@ set hidden
 set clipboard+=unnamedplus
 filetype off
 
-call plug#begin('~/.local/share/nvim/plugged')
+if has('nvim')
+    if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
+      silent !curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+    call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+else
+    if empty(glob('$HOME/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+    call plug#begin('$HOME/.vim/plugged')
+endif
+
 Plug 'bfontaine/Brewfile.vim'
 Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
