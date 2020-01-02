@@ -47,9 +47,46 @@ if [ ! -d "$HOME/.vim" ]; then
     mkdir $HOME/.vim
     mkdir $HOME/.vim/plugged
     mkdir $HOME/.vim/autoload
+    mkdir $HOME/.vim/files
+    mkdir $HOME/.vim/files/backupdir
+    mkdir $HOME/.vim/files/swapdir
+    mkdir $HOME/.vim/files/undodir
 fi
-ln -s $HOME/dotfiles/.nvimrc $HOME/.vimrc
-ln -s $HOME/dotfiles/.nvimrc $HOME/.nvimrc
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
-ln -s $HOME/dotfiles/.zlogin $HOME/.zlogin
-ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
+
+if [ ! -f "$PWD/.nvimrc" ]; then
+    ln -s $PWD/.nvimrc $HOME/.vimrc
+else
+    echo "Not linking .vimrc"
+fi
+
+if [ ! -f "$PWD/.nvimrc" ]; then
+    ln -s $PWD/.nvimrc $HOME/.nvimrc
+else
+    echo "Not linking .nvimrc"
+fi
+
+if [ ! -f "$PWD/.zshrc" ]; then
+    ln -s $PWD/.zshrc $HOME/.zshrc
+else
+    echo "Not linking .zshrc"
+fi
+
+if [ ! -f "$PWD/.zlogin" ]; then
+    ln -s $PWD/.zlogin $HOME/.zlogin
+else
+    echo "Not linking .zlogin"
+fi
+
+if [ ! -f "$PWD/.tmux.conf" ]; then
+    ln -s $PWD/.tmux.conf $HOME/.tmux.conf
+else
+    echo "Not linking tmux config"
+fi
+
+if [ ! -d "$XDG_CONFIG_HOME/nvim" ]; then
+    echo Creating $XDG_CONFIG_HOME/nvim
+    mkdir $XDG_CONFIG_HOME/nvim
+    ln $PWD/.nvimrc $XDG_CONFIG_HOME/nvim/init.vim
+else 
+    echo "Not linking .nvimrc to XDG_CONFIG_HOME"
+fi

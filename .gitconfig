@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Andrew Scagnelli
+	email = ascagnel@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	st = status
+	last = log -1 HEAD
+	unstage = reset HEAD --
+[core]
+	excludesfile = /Users/ascagnel/.gitignore_global
