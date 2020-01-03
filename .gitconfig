@@ -1,6 +1,5 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
 	name = Andrew Scagnelli
 	email = ascagnel@gmail.com
 [alias]
@@ -11,3 +10,7 @@
 	unstage = reset HEAD --
 [core]
 	excludesfile = /Users/ascagnel/.gitignore_global
+[pull]
+    rebase = true
+    ff = only
+
