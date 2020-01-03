@@ -37,7 +37,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'tsx'] }
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else

@@ -5,6 +5,7 @@ yarn-debug.log
 yarn-error.log
 Session.vim
 .graphqlconfig
+*.code-workspace
 
 # Mac
 .DS_Store
