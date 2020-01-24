@@ -9,8 +9,16 @@
 	last = log -1 HEAD
 	unstage = reset HEAD --
 [core]
-	excludesfile = /Users/ascagnel/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [pull]
     rebase = true
     ff = only
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
