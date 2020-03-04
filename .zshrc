@@ -49,16 +49,16 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx yarn colored-man-pages vi-mode jira)
+plugins=(vi-mode)
 
 # User configuration
-export PATH=$PATH:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin
+export PATH=/usr/local/opt/node@10/bin:/usr/local/opt/python/libexec/bin:$PATH:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
 # export PATH="/usr/local/opt/node@8/bin:$PATH"
-export PATH="/usr/local/opt/node@10/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/node@10/bin:$PATH"
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
-export PATH=$PATH:$(yarn global bin)
-export PATH=$PATH:./node_modules/.bin
+#export PATH=$PATH:$(yarn global bin)
+#export PATH=$PATH:./node_modules/.bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,9 +76,8 @@ export XDG_CACHE_HOME="$HOME/Library/Caches"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
-alias ll="ls -al"
 alias ta="tmux a -t "
-alias tc="tmux new-session -t"
+#alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"
 
 if hash trash 2>/dev/null; then
