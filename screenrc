@@ -5,4 +5,3 @@ vbell on
 hardstatus alwayslastline "%{rw}%H%{wk}|%?%-Lw%?%{wb}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 screen -t bash bash
-screen -t rt bash
