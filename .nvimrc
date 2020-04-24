@@ -1,5 +1,5 @@
 set hidden
-set clipboard+=unnamedplus
+set clipboard=unnamed
 filetype off
 
 if has('nvim')
@@ -29,25 +29,16 @@ Plug 'ervandew/supertab'
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-rooter'
 Plug 'mileszs/ack.vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
-Plug '/usr/local/opt/fzf'
+Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'tsx'] }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-" For Denite features
-Plug 'Shougo/denite.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 call plug#end()            " required
 filetype plugin indent on    " required
 
@@ -101,7 +92,6 @@ set wildignore+=**/node_modules
 set wildignore+=**/public
 set wildignore+=**/dist
 set wildignore+=**/coverage
-set wildignore+=**/assets/c
 set wildignore+=**/__generated__
 set wildignore+=**/__snapshots__
 
@@ -114,11 +104,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ 'PrtClearCache()': ['<F6>', '<c-r>'],
     \ }
-let g:fzf_action = {
-  \ 'enter': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \ }
 
 let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
 let g:ctrlp_max_depth=45
@@ -133,7 +118,6 @@ let g:ctrlp_clear_cache_on_exit=0
 let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
 let g:javascript_plugin_jsdoc = 1
-let g:used_javascript_libs = 'underscore,backbone,react,flux'
 
 let g:startify_list_order = [
             \ ['  Bookmarks '], 'bookmarks',
@@ -153,18 +137,11 @@ let g:startify_session_savecmds = [
             \ 'Obsession'
             \ ]
 
-let g:testdrive#detect = 1
-let g:testdrive#use_dispatch = 1
-let g:testdrive#always_open_results = 0
-
 " mouse stuff
 set mouse+=a
 " if &term =~ '^screen'
     " set ttymouse=xterm2
 " endif
-
-" let g:flow#autoclose = 1
-" let g:javascript_plugin_flow = 1
 
 set secure
 
@@ -184,12 +161,17 @@ augroup FiletypeGroup
 augroup END
 
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+
+let b:coc_root_patterns = [".git"]
+au FileType typescript let b:coc_root_patterns = ['tsconfig.json']
+au FileType typescript.tsx let b:coc_root_patterns = ['tsconfig.json']
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-let test#strategy = "terminal"
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
@@ -206,13 +188,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <C-p> :FZF<CR>
-
-" make test commands execute using dispatch.vim
-let test#strategy = "dispatch"
-
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local
 endif
-let g:typescript_compiler_binary = 'yarn'
-let g:typescript_compiler_options = 'type:check'

@@ -5,10 +5,10 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="nanotech"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -53,12 +53,6 @@ plugins=(vi-mode)
 
 # User configuration
 export PATH=/usr/local/opt/node@10/bin:/usr/local/opt/python/libexec/bin:$PATH:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
-# export PATH="/usr/local/opt/node@8/bin:$PATH"
-# export PATH="/usr/local/opt/node@10/bin:$PATH"
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# export PATH=/opt/boxen/homebrew/Cellar/yarn/1.7.0/bin:/opt/boxen/homebrew/opt/node@8/bin:$PATH:
-#export PATH=$PATH:$(yarn global bin)
-#export PATH=$PATH:./node_modules/.bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,7 +69,7 @@ export XDG_CACHE_HOME="$HOME/Library/Caches"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="nvim"
+alias vi="vim"
 alias ta="tmux a -t "
 #alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"
