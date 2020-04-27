@@ -55,6 +55,13 @@ if [ ! -d "$HOME/.vim" ]; then
     mkdir $HOME/.vim/files/undodir
 fi
 
+if [ ! -f "$HOME/.vim/coc-settings.json" ]; then
+    ln $PWD/coc-settings.json $HOME/.vim/coc-settings.json
+    echo "Linked coc-settings.json"
+else
+    echo "Not linking coc-settings.json"
+fi
+
 if [ ! -f "$HOME/.nvimrc" ]; then
     ln -s $PWD/nvimrc $HOME/.vimrc
     echo "linked .vimrc"
@@ -130,4 +137,11 @@ if [ ! -f "$XDG_CONFIG_HOME/nvim/init.vim" ]; then
     echo "Linked .nvimrc to \$XDG_CONFIG_HOME"
 else 
     echo "Not linking .nvimrc to \$XDG_CONFIG_HOME"
+fi
+
+if [ ! -f "$XDG_CONFIG_HOME/nvim/coc-settings.json" ]; then
+    ln $PWD/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
+    echo "Linked coc-settings.json to \$XDG_CONFIG_HOME"
+else 
+    echo "Not linking coc-settings.json to \$XDG_CONFIG_HOME"
 fi

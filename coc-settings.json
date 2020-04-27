@@ -1,0 +1,7 @@
+{
+    "diagnostic.level": "error",
+    "coc.preferences.rootPatterns": [".git"],
+    "tsserver.log": "verbose",
+    "tsserver.disableWorkspaceFolders": true,
+    "tsserver.maxTsServerMemory": 4096
+}
