@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ -x "$(command -v xcode-select)" ]]; then
+if [ -x "$(command -v xcode-select)" ]; then
     echo Install xcodeutils…
     read -p "Press any key to continue... " -n1 -s
     echo  '\n'
@@ -12,26 +12,25 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else
     echo "$HOME/.oh-my-zsh already exists, not installing oh-my-zsh"
 fi
-echo '\n'
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    if [[ ! -x "$(command -v brew)" ]]; then
+if [ "(uname -s)" = "Darwin" ]; then
+    if [ ! -x "$(command -v brew)" ]; then
         echo Install Homebrew, and homebrew bundle…
         read -p "Press any key to continue... " -n1 -s
         echo  '\n'
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew tap Homebrew/bundle
-        echo  '\n'
         echo Install bundled software
         read -p "Press any key to continue... " -n1 -s
         brew bundle
-        echo  '\n'
     else
         echo "Not installing Homebrew"
-        echo  '\n'
     fi
+    else
+        echo "Not installing Homebrew"
 fi
-if [[ -z "$XDG_CONFIG_HOME" ]]; then
-    if [[ "$OSTYPE" =~ ^darwin ]]; then
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    if [ "$OSTYPE" =~ ^darwin ]; then
         echo "\$XDG_CONFIG_HOME is not set; setting to \$HOME/Library/Preferences"
         read -p "Press any key to continue... " -n1 -s
         export XDG_CONFIG_HOME=$HOME/Library/Preferences
@@ -43,7 +42,6 @@ if [[ -z "$XDG_CONFIG_HOME" ]]; then
 else
     echo "XDG_CONFIG_HOME already set to $XDG_CONFIG_HOME; not resetting"
 fi
-echo  '\n'
 if [ ! -d "$HOME/.vim" ]; then
     echo Creating $HOME/.vim
     mkdir $HOME/.vim
