@@ -74,6 +74,7 @@ else
     echo "Not linking .nvimrc"
 fi
 
+ln $PWD/gnzh-custom.zsh-theme $HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme
 if [ ! -f "$HOME/.zshrc" ]; then
     ln -s $PWD/zshrc $HOME/.zshrc
     echo "Linked .zshrc"

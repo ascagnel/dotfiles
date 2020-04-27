@@ -5,7 +5,7 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="nanotech"
+ZSH_THEME="gnzh-custom"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -86,7 +86,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 
-export DEFAULT_USER=`whoami`
+export DEFAULT_USER="$(whoami)"
 export HOSTNAME=`hostname -s`
 
 prompt_context() {
