@@ -74,7 +74,11 @@ else
     echo "Not linking .nvimrc"
 fi
 
+if [ -f "$HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme" ]; then
+    rm $HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme
+fi
 ln $PWD/gnzh-custom.zsh-theme $HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme
+
 if [ ! -f "$HOME/.zshrc" ]; then
     ln -s $PWD/zshrc $HOME/.zshrc
     echo "Linked .zshrc"
@@ -144,3 +148,5 @@ if [ ! -f "$XDG_CONFIG_HOME/nvim/coc-settings.json" ]; then
 else 
     echo "Not linking coc-settings.json to \$XDG_CONFIG_HOME"
 fi
+
+echo "Setup complete, please start a new shell"
