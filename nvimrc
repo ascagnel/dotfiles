@@ -70,7 +70,9 @@ set autoread
 set autochdir
 set exrc
 
-au FocusGained,BufEnter * :checktime
+if has('nvim')
+    au FocusGained,BufEnter * :checktime
+endif
 
 set backupdir=~/.vim/files/backupdir//
 set directory=~/.vim/files/swapdir//
