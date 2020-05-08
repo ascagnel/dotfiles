@@ -32,12 +32,14 @@ Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -190,6 +192,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'enter': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \ }
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local
 endif
