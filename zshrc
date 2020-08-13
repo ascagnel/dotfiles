@@ -52,7 +52,7 @@ CASE_SENSITIVE="true"
 plugins=(vi-mode)
 
 # User configuration
-export PATH=/usr/local/opt/node@10/bin:/usr/local/opt/python/libexec/bin:$PATH:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
+export PATH=$PATH:bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
 
 source $ZSH/oh-my-zsh.sh
 

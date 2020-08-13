@@ -1,20 +1,14 @@
 tap "homebrew/core"
 tap "homebrew/bundle"
-tap "neovim/neovim"
 tap "AlexanderWillner/tap"
-tap "cjbassi/gotop"
 brew "ack"
 brew "fzf"
 brew "jq"
-brew "neovim"
 brew "ripgrep"
 brew "terminal-notifier"
 brew "tmux", args: ["HEAD"]
-brew "wget"
 brew "yarn"
 brew "trash"
 brew "mas"
-brew "w3m"
-brew "gotop"
-mas "Things3", id: 904280696 
+brew "htop"
 mas "1Password 7", id: 1333542190

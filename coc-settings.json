@@ -1,9 +1,7 @@
 {
+    "tsserver.enable": false,
     "diagnostic.level": "error",
     "coc.preferences.rootPatterns": [".git"],
-    "tsserver.log": "verbose",
-    "tsserver.disableWorkspaceFolders": true,
-    "tsserver.maxTsServerMemory": 4096,
     "coc.preferences.formatOnSaveFiletypes": ["*"],
     "prettier.requireConfig": true,
     "prettier.statusItemText":"no-prettier",

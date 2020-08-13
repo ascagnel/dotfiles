@@ -9,3 +9,13 @@ Session.vim
 
 # Mac
 .DS_Store
+
+#Typscript
+.tscache
+
+#Sublime text
+*.sublime-workspace
+*.sublime-project
+
+#vim
+.vim/

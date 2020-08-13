@@ -98,6 +98,7 @@ set wildignore+=**/dist
 set wildignore+=**/coverage
 set wildignore+=**/__generated__
 set wildignore+=**/__snapshots__
+set wildignore+=**/build
 
 map! jk <Esc>
 map! jj <Esc>
