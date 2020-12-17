@@ -69,7 +69,7 @@ export XDG_CACHE_HOME="$HOME/Library/Caches"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="vim"
+alias vi="nvim"
 alias ta="tmux a -t "
 #alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"

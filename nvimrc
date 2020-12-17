@@ -18,6 +18,7 @@ else
     call plug#begin('$HOME/.vim/plugged')
 endif
 
+Plug 'APZelos/blamer.nvim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
@@ -28,19 +29,17 @@ Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-rooter'
-Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
-" Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'ianks/vim-tsx'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-eslint']
 call plug#end()            " required
 filetype plugin indent on    " required
 
@@ -167,14 +166,15 @@ augroup END
 
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunjucks,*.twig set ft=jinja
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
-au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
 
 let b:coc_root_patterns = [".git"]
 au FileType typescript let b:coc_root_patterns = ['tsconfig.json']
 au FileType typescript.tsx let b:coc_root_patterns = ['tsconfig.json']
 
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
 endif
 
 tnoremap <C-h> <C-\><C-N><C-w>h
@@ -194,11 +194,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <C-p> :FZF<CR>
+let g:blamer_enabled = 1
+let g:blamer_template = '<committer> <summary>'
 let g:fzf_action = {
   \ 'enter': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit'
   \ }
+let g:typescript_indent_disable = 1
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local
 endif
