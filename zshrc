@@ -120,7 +120,20 @@ fshow() {
 
 fd() {
   preview="git diff $@ --color=always -- {-1}"
-  git diff $@ --name-only | fzf-tmux -m --ansi --preview $preview
+  git diff $@ --name-only | fzf-tmux -m -p 80% --ansi --preview $preview
 }
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+gf() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  fzf-tmux -p 80% -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+  cut -c4- | sed 's/.* -> //'
+}
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
