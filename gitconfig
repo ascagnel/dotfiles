@@ -1,13 +1,14 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Andrew Scagnelli
+	name = Andrew Scagnelli-Townley
 	email = ascagnel@gmail.com
 [alias]
 	co = checkout
-	br = branch
+    br = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf-tmux -p)
 	st = status
 	last = log -1 HEAD
 	unstage = reset HEAD --
+    sw = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf-tmux -p)
 [core]
 	excludesfile = ~/.gitignore_global
 [pull]
@@ -22,3 +23,10 @@
 [mergetool "vimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = master

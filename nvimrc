@@ -39,7 +39,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let g:coc_global_extensions = ['coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-eslint']
+Plug 'tpope/vim-rhubarb'
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-prettier', 'coc-eslint']
 call plug#end()            " required
 filetype plugin indent on    " required
 
