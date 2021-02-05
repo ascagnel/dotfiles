@@ -118,4 +118,9 @@ fshow() {
   done
 }
 
+fd() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf-tmux -m --ansi --preview $preview
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
