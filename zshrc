@@ -30,7 +30,7 @@ CASE_SENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -43,7 +43,7 @@ CASE_SENSITIVE="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM=$HOME/dotifles/zsh_custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -54,9 +54,11 @@ plugins=(vi-mode)
 # User configuration
 export PATH=$PATH:bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
 
+[ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
+
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim'
+export EDITOR='vim'
 export XDG_CONFIG_HOME="$HOME/Library/Preferences"
 export XDG_DATA_HOME="$HOME/Library"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
@@ -84,8 +86,6 @@ if hash rg 2>/dev/null; then
 fi
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
-[ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 
 export DEFAULT_USER="$(whoami)"
 export HOSTNAME=`hostname -s`
