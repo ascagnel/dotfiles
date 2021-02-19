@@ -70,7 +70,7 @@ export FZF_TMUX_OPTS='-p 80%'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="nvim"
+alias vi="vim"
 alias ta="tmux a -t "
 #alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"
