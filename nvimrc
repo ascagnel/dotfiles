@@ -195,13 +195,21 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <C-p> :FZF<CR>
-let g:blamer_enabled = 1
+let g:blamer_enabled = 0
 let g:blamer_template = '<committer> <summary>'
+let g:fzf_buffers_jump = 1
 let g:fzf_action = {
-  \ 'enter': 'tab split',
+  \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit'
   \ }
+
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+else
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+endif
+
 let g:typescript_indent_disable = 1
 if filereadable($HOME . "/.nvimrc_local")
     source $HOME/.nvimrc_local

@@ -8,7 +8,7 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="apple"
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -35,7 +35,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -135,5 +135,17 @@ gf() {
   cut -c4- | sed 's/.* -> //'
 }
 
+if [ "(uname -s)" = "Darwin" ]; then
+  sudo() {
+    unset -f sudo
+    if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_tid.so' /etc/pam.d/sudo --quiet; then
+      sudo sed -i -e '1s;^;auth       sufficient     pam_tid.so\n;' /etc/pam.d/sudo
+    fi
+    if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_watchid.so' /etc/pam.d/sudo --quiet; then
+      sudo sed -i -e '1s;^;auth       sufficient     pam_watchid.so "reason=execute a command as root"\n;' /etc/pam.d/sudo
+    fi
+    sudo "$@"
+  }
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
