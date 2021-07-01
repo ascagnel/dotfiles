@@ -20,26 +20,22 @@ endif
 
 Plug 'APZelos/blamer.nvim'
 Plug 'bfontaine/Brewfile.vim'
-Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'tpope/vim-obsession'
-Plug 'ervandew/supertab'
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-rooter'
 Plug 'plasticboy/vim-markdown'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-rhubarb'
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-prettier', 'coc-eslint']
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -68,7 +64,7 @@ set incsearch
 set scrolloff=5
 set sidescrolloff=5
 set cmdheight=2
-set autoread
+"set autoread
 set autochdir
 set exrc
 
@@ -83,7 +79,7 @@ set undodir=~/.vim/files/undodir//
 " Always show the status line
 set laststatus=2
 
-set statusline=\ %m%f\ \(\%l,%v\)
+set statusline=\ %m%f\ \(\%l,%v\)\ %{ObsessionStatus()}
 set number
 
 set expandtab

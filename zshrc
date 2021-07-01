@@ -74,6 +74,7 @@ export FZF_TMUX_OPTS='-p 80%'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim"
 alias ta="tmux a -t "
+alias jsonpp="json_pp -json_opt pretty,utf8"
 #alias tc="tmux new-session -t"
 #alias edit="open -a TextEdit"
 
