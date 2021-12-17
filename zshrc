@@ -58,7 +58,7 @@ export PATH=$PATH:bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/Library/Preferences"
 export XDG_DATA_HOME="$HOME/Library"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
@@ -72,7 +72,7 @@ export FZF_TMUX_OPTS='-p 80%'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="vim"
+alias vi="nvim"
 alias ta="tmux a -t "
 alias jsonpp="json_pp -json_opt pretty,utf8"
 #alias tc="tmux new-session -t"
@@ -84,6 +84,10 @@ fi
 
 if hash rg 2>/dev/null; then
     alias grep="rg"
+fi
+
+if hash yt-dlp 2>/dev/null; then
+    alias youtube-dl="yt-dlp"
 fi
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
