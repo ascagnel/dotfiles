@@ -59,9 +59,6 @@ export PATH=$PATH:bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
-export XDG_CONFIG_HOME="$HOME/Library/Preferences"
-export XDG_DATA_HOME="$HOME/Library"
-export XDG_CACHE_HOME="$HOME/Library/Caches"
 export FZF_TMUX_OPTS='-p 80%'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
