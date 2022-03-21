@@ -11,5 +11,4 @@ brew "yarn"
 brew "trash"
 brew "mas"
 brew "htop"
-brew "nnn"
 mas "1Password 7", id: 1333542190
