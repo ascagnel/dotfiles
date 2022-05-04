@@ -33,9 +33,12 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dispatch'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Plug 'leafgarland/typescript-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'eliba2/vim-node-inspect'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-test/vim-test'
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-prettier', 'coc-eslint']
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -79,7 +82,7 @@ set undodir=~/.vim/files/undodir//
 " Always show the status line
 set laststatus=2
 
-set statusline=\ %m%f\ \(\%l,%v\)\ %{ObsessionStatus()}
+set statusline=\ %m%f\ \(\%l,%v\)
 set number
 
 set expandtab
@@ -99,22 +102,7 @@ set wildignore+=*/**/build
 map! jk <Esc>
 map! jj <Esc>
 
-" CtrlP -- default new tab
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ 'PrtClearCache()': ['<F6>', '<c-r>'],
-    \ }
-
-let g:ctrlp_cache_dir= $HOME.'/.vim/caches'
-let g:ctrlp_max_depth=45
-let g:ctrlp_working_path_mode='r'
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_root_markers=['.git/']
 let g:rooter_patterns = ['.git/']
-let g:ctrlp_max_files=0
-let g:ctrlp_use_caching=5
-let g:ctrlp_clear_cache_on_exit=0
 
 let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
@@ -138,11 +126,7 @@ let g:startify_session_savecmds = [
             \ 'Obsession'
             \ ]
 
-" mouse stuff
 set mouse+=a
-" if &term =~ '^screen'
-    " set ttymouse=xterm2
-" endif
 
 set secure
 
@@ -153,8 +137,6 @@ nmap ]c <Plug>(GitGutterNextHunk)
 nmap <Leader>hs <Plug>(GitGutterStageHunk)
 nmap <Leader>hr <Plug>(GitGutterRevertHunk)
 nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
-
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 augroup FiletypeGroup
     autocmd!
@@ -191,6 +173,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <C-p> :FZF<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> <cmd>BlamerToggle<cr>
 let g:blamer_enabled = 0
 let g:blamer_template = '<committer> <summary>'
 let g:fzf_buffers_jump = 1
@@ -200,11 +185,25 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \ }
 
-if exists('$TMUX')
-  let g:fzf_layout = { 'tmux': '-p90%,60%' }
-else
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-endif
+let g:fzf_layout = {
+  \ 'tmux': '-p90%,60%',
+  \ 'window': { 'width': 0.9, 'height': 0.6 }
+  \ }
+
+nnoremap <silent><F4> :NodeInspectStart<cr>
+nnoremap <silent><F5> :NodeInspectRun<cr>
+nnoremap <silent><F6> :NodeInspectConnect("127.0.0.1:9229")<cr>
+nnoremap <silent><F7> :NodeInspectStepInto<cr>
+nnoremap <silent><F8> :NodeInspectStepOver<cr>
+nnoremap <silent><F9> :NodeInspectToggleBreakpoint<cr>
+nnoremap <silent><F10> :NodeInspectStop<cr>
+
+let test#strategy = "dispatch"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 let g:typescript_indent_disable = 1
 if filereadable($HOME . "/.nvimrc_local")

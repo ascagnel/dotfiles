@@ -1,6 +1,8 @@
 {
     "tsserver.enable": false,
     "diagnostic.level": "error",
+    "eslint.alwaysShowStatus": true,
+    "eslint.enable": true,
     "coc.preferences.rootPatterns": [".git"],
     "coc.preferences.formatOnSaveFiletypes": ["*"],
     "prettier.requireConfig": true,
