@@ -175,7 +175,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-p> :GFiles<CR>
-nnoremap <C-g> <cmd>BlamerToggle<cr>
+nnoremap <C-l> :BlamerToggle<cr>
 let g:blamer_enabled = 0
 let g:blamer_template = '<committer> <summary>'
 let g:fzf_buffers_jump = 1
@@ -198,7 +198,7 @@ nnoremap <silent><F8> :NodeInspectStepOver<cr>
 nnoremap <silent><F9> :NodeInspectToggleBreakpoint<cr>
 nnoremap <silent><F10> :NodeInspectStop<cr>
 
-let test#strategy = "dispatch"
+let test#strategy = "dispatch_background"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
