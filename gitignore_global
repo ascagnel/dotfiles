@@ -20,3 +20,7 @@ Session.vim
 #vim
 .vim/
 vim-node-config.json
+
+#ripgrep
+.ignore
+.rgignore

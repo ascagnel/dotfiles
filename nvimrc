@@ -82,7 +82,7 @@ set undodir=~/.vim/files/undodir//
 " Always show the status line
 set laststatus=2
 
-set statusline=\ %m%f\ \(\%l,%v\)
+set statusline=\ %m%f\ \(\%l,%v\)\ %{FugitiveStatusline()}
 set number
 
 set expandtab
@@ -172,10 +172,16 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <C-p> :FZF<CR>
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-l> :BlamerToggle<cr>
+nmap <silent> <leader>f :GGrep<CR>
+
 let g:blamer_enabled = 0
 let g:blamer_template = '<committer> <summary>'
 let g:fzf_buffers_jump = 1

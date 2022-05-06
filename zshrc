@@ -54,6 +54,7 @@ plugins=(vi-mode)
 # User configuration
 export PATH=$PATH:bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin:/opt/boxen/bin:${HOME}/.bin:./node_modules/.bin
 
+# per-system configuration
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 
 source $ZSH/oh-my-zsh.sh
