@@ -138,17 +138,19 @@ gf() {
   cut -c4- | sed 's/.* -> //'
 }
 
-if [ "(uname -s)" = "Darwin" ]; then
-  sudo() {
-    unset -f sudo
-    if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_tid.so' /etc/pam.d/sudo --quiet; then
-      sudo sed -i -e '1s;^;auth       sufficient     pam_tid.so\n;' /etc/pam.d/sudo
-    fi
-    if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_watchid.so' /etc/pam.d/sudo --quiet; then
-      sudo sed -i -e '1s;^;auth       sufficient     pam_watchid.so "reason=execute a command as root"\n;' /etc/pam.d/sudo
-    fi
-    sudo "$@"
-  }
-fi
+# if on a Mac, use touchID/watchID to authenticate commands
+# (appears to be broken on 12.3.1)
+# if [ "(uname -s)" = "Darwin" ]; then
+#   sudo() {
+#     unset -f sudo
+#     if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_tid.so' /etc/pam.d/sudo --quiet; then
+#       sudo sed -i -e '1s;^;auth       sufficient     pam_tid.so\n;' /etc/pam.d/sudo
+#     fi
+#     if [[ "$(uname)" == 'Darwin' ]] && ! grep 'pam_watchid.so' /etc/pam.d/sudo --quiet; then
+#       sudo sed -i -e '1s;^;auth       sufficient     pam_watchid.so "reason=execute a command as root"\n;' /etc/pam.d/sudo
+#     fi
+#     sudo "$@"
+#   }
+# fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
