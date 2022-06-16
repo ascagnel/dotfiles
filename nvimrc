@@ -180,6 +180,7 @@ command! -bang -nargs=* GGrep
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-l> :BlamerToggle<cr>
+nnoremap <C-q> :Ag<cr>
 nmap <silent> <leader>f :GGrep<CR>
 
 let g:blamer_enabled = 0
@@ -196,13 +197,13 @@ let g:fzf_layout = {
   \ 'window': { 'width': 0.9, 'height': 0.6 }
   \ }
 
-nnoremap <silent><F4> :NodeInspectStart<cr>
+nnoremap <silent><F4> :NodeInspectConnect("127.0.0.1:9229")<cr>
 nnoremap <silent><F5> :NodeInspectRun<cr>
-nnoremap <silent><F6> :NodeInspectConnect("127.0.0.1:9229")<cr>
-nnoremap <silent><F7> :NodeInspectStepInto<cr>
-nnoremap <silent><F8> :NodeInspectStepOver<cr>
-nnoremap <silent><F9> :NodeInspectToggleBreakpoint<cr>
-nnoremap <silent><F10> :NodeInspectStop<cr>
+nnoremap <silent><F8> :NodeInspectToggleBreakpoint<cr>
+nnoremap <silent><F9> :NodeInspectStepOver<cr>
+nnoremap <silent><F10> :NodeInspectStepInto<cr>
+nnoremap <silent><F11> :NodeInspectStepOut<cr>
+nnoremap <silent><F12> :NodeInspectStop<cr>
 
 let test#strategy = "dispatch_background"
 nmap <silent> <leader>t :TestNearest<CR>

@@ -2,6 +2,7 @@
 [user]
 	name = Andrew Scagnelli-Townley
 	email = ascagnel@gmail.com
+	signingkey = AC09740623F301C4
 [alias]
 	co = checkout
     br = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf-tmux -p)
