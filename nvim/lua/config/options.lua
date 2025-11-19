@@ -17,13 +17,13 @@ vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 
 vim.opt.wildignore = {
-  "**/node_modules",
-  "**/public",
-  "**/dist",
-  "**/coverage",
-  "**/__generated__",
-  "**/__snapshots__",
-  "*/**/build"
+    "**/node_modules",
+    "**/public",
+    "**/dist",
+    "**/coverage",
+    "**/__generated__",
+    "**/__snapshots__",
+    "*/**/build"
 }
 
 vim.keymap.set('i', 'jj', '<Esc>', {
@@ -71,4 +71,3 @@ vim.opt.backup = true
 
 -- use system clipboard
 vim.opt.clipboard = "unnamedplus"
-
