@@ -6,10 +6,33 @@ return {
   -- dependencies = { "nvim-mini/mini.icons" },
   opts = {},
   keys = {
-	{ "<C-p>", "<cmd>FzfLua global<cr>", desc = "Global search" },
-    { "<C-b>", "<cmd>FzfLua buffers<cr>" },
-    { "gd", "<cmd>FzfLua lsp_definitions<cr>", desc = "Go to definition" },
-    { "gr", "<cmd>FzfLua lsp_references<cr>", desc = "Go to references" },
-    { "gc", "<cmd>FzfLua continue<cr>", desc = "Continue previous search" },
+	{
+        "<C-p>", 
+        function ()
+            require('fzf-lua').global()
+        end,
+        desc = "Global search"
+    },
+    {
+        "<C-b>",
+        function ()
+            require('fzf-lua').buffers()
+        end,
+        desc = "Buffer search",
+    },
+    {
+        "gd",
+        function ()
+            require('fzf-lua').lsp_definitions()
+        end,
+        desc = "Go to definition"
+    },
+    {
+        "gr",
+        function ()
+            require('fzf-lua').lsp_references()
+        end,
+        desc = "Go to references"
+    },
   },
 }

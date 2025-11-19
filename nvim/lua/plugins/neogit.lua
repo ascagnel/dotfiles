@@ -10,6 +10,12 @@ return {
   },
   cmd = "Neogit",
   keys = {
-    { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+    {
+        "<leader>gg",
+        function ()
+            require('neogit')
+        end,
+        desc = "Show Neogit UI"
+    }
   }
 }

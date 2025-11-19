@@ -31,9 +31,6 @@ vim.keymap.set('i', 'jk', '<Esc>', {
     noremap = true, silent = true
 })
 
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = "\\"
-
 -- Disable virtual text (optional, if you only want the floating window)
 vim.diagnostic.config({
     virtual_text = false,
@@ -48,4 +45,25 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         vim.diagnostic.open_float(nil, { focus = false })
     end
 })
+
+-- Define the directories
+-- Use vim.fn.stdpath('cache') to put them in a standard cache location
+local swapdir = vim.fn.stdpath('cache') .. "/swap//"
+local backupdir = vim.fn.stdpath('cache') .. "/backup//"
+
+-- Create the directories if they don't exist
+if vim.fn.isdirectory(swapdir) == 0 then
+    vim.fn.mkdir(swapdir, "p", "0o700")
+end
+if vim.fn.isdirectory(backupdir) == 0 then
+    vim.fn.mkdir(backupdir, "p", "0o700")
+end
+
+-- Set the Neovim options
+vim.opt.directory = swapdir
+vim.opt.backupdir = backupdir
+
+-- Enable the features (optional, they are often on by default)
+vim.opt.swapfile = true
+vim.opt.backup = true
 
