@@ -4,7 +4,9 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
+vim.opt.wrap = false
+vim.opt.timeoutlen = 1000
 
 vim.opt.foldmethod = "syntax"
 vim.opt.foldlevel = 99
@@ -66,4 +68,7 @@ vim.opt.backupdir = backupdir
 -- Enable the features (optional, they are often on by default)
 vim.opt.swapfile = true
 vim.opt.backup = true
+
+-- use system clipboard
+vim.opt.clipboard = "unnamedplus"
 
