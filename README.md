@@ -4,6 +4,6 @@ Personal dotfiles
 Dotfiles for:
 
 * Bash (.bashrc, .bash_aliases, .bash_logout)
-* Vim (.vimrc)
+* NeoVim (nvim/init.lua)
 * tmux (.tmux.conf)
 * GNU Screen (.screenrc)
