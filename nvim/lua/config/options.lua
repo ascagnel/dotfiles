@@ -33,3 +33,19 @@ vim.keymap.set('i', 'jk', '<Esc>', {
 
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
+
+-- Disable virtual text (optional, if you only want the floating window)
+vim.diagnostic.config({
+    virtual_text = false,
+})
+
+-- Set a shorter updatetime for faster hover detection (default is 4000ms or 4s)
+vim.o.updatetime = 250 -- milliseconds
+
+-- Autocmd to open a floating window with diagnostics on CursorHold
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+    end
+})
+
