@@ -42,37 +42,6 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 else
     echo "XDG_CONFIG_HOME already set to $XDG_CONFIG_HOME; not resetting"
 fi
-if [ ! -d "$HOME/.vim" ]; then
-    echo Creating $HOME/.vim
-    mkdir $HOME/.vim
-    mkdir $HOME/.vim/plugged
-    mkdir $HOME/.vim/autoload
-    mkdir $HOME/.vim/files
-    mkdir $HOME/.vim/files/backupdir
-    mkdir $HOME/.vim/files/swapdir
-    mkdir $HOME/.vim/files/undodir
-fi
-
-if [ ! -f "$HOME/.vim/coc-settings.json" ]; then
-    ln $PWD/coc-settings.json $HOME/.vim/coc-settings.json
-    echo "Linked coc-settings.json"
-else
-    echo "Not linking coc-settings.json"
-fi
-
-if [ ! -f "$HOME/.nvimrc" ]; then
-    ln -s $PWD/nvimrc $HOME/.vimrc
-    echo "linked .vimrc"
-else
-    echo "Not linking .vimrc"
-fi
-
-if [ ! -f "$HOME/.nvimrc" ]; then
-    ln -s $PWD/nvimrc $HOME/.nvimrc
-    echo "Linked nvimrc file"
-else
-    echo "Not linking .nvimrc"
-fi
 
 if [ -f "$HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme" ]; then
     rm $HOME/.oh-my-zsh/themes/gnzh-custom.zsh-theme
@@ -129,24 +98,10 @@ else
 fi
 
 if [ ! -d "$XDG_CONFIG_HOME/nvim" ]; then
-    mkdir $XDG_CONFIG_HOME/nvim
-    echo "Created \$XDG_CONFIG_HOME/nvim"
+    ln -s $PWD/nvim $XDG_CONFIG_HOME
+    echo "Linked nvim to $XDG_CONFIG_HOME/nvim"
 else 
-    echo "Not creating \$XDG_CONFIG_HOME/nvim"
-fi
-
-if [ ! -f "$XDG_CONFIG_HOME/nvim/init.vim" ]; then
-    ln $PWD/nvimrc $XDG_CONFIG_HOME/nvim/init.vim
-    echo "Linked .nvimrc to \$XDG_CONFIG_HOME"
-else 
-    echo "Not linking .nvimrc to \$XDG_CONFIG_HOME"
-fi
-
-if [ ! -f "$XDG_CONFIG_HOME/nvim/coc-settings.json" ]; then
-    ln $PWD/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
-    echo "Linked coc-settings.json to \$XDG_CONFIG_HOME"
-else 
-    echo "Not linking coc-settings.json to \$XDG_CONFIG_HOME"
+    echo "Not linking nvim to $XDG_CONFIG_HOME/nvim"
 fi
 
 echo "Setup complete, please start a new shell"
