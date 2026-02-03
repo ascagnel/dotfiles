@@ -24,3 +24,12 @@ vim-node-config.json
 #ripgrep
 .ignore
 .rgignore
+
+#vscode
+.vscode/tasks.json
+
+#claude
+.claude/settings.local.json
+
+#zed
+.zed

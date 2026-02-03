@@ -6,7 +6,7 @@ return {
     keys = {
         {
             -- Customize or remove this keymap to your liking
-            "<leader>f",
+            "<leader>format",
             function()
                 require("conform").format({ async = true })
             end,
@@ -14,7 +14,7 @@ return {
             desc = "Format buffer",
         },
         {
-            "<leader>fo",
+            "<leader>formatv",
             function()
                 require("conform").format({ visual = true })
             end,
@@ -29,7 +29,6 @@ return {
         -- Define your formatters
         formatters_by_ft = {
             lua = { "stylua" },
-            python = { "isort", "black" },
             javascript = { "prettierd", "prettier", stop_after_first = true, },
             typescript = { "prettierd", "prettier", stop_after_first = true, },
             typescriptreact = { "prettierd", "prettier", stop_after_first = true, },
