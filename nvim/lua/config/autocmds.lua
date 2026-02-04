@@ -1,9 +1,18 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup("organise_imports"),
+    group = vim.api.nvim_create_augroup("organise_imports", { clear = true }),
     pattern = "*.ts",
     callback = function()
         vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" }, diagnostics = {} } })
         vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
+    end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+    callback = function(args)
+        local opts = { buffer = args.buf, noremap = true, silent = true }
+        vim.keymap.set('n', '<leader>fix', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', '<leader>d', vim.lsp.buf.hover, opts)
     end,
 })
 

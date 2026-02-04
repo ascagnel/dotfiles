@@ -3,10 +3,11 @@ return {
         'nvim-mini/mini.sessions',
         version = '*',
         opts = {
-            autoread = true,
+            -- autoread = true,
             autowrite = true,
         }
     },
+    --[[
     {
         'nvim-mini/mini.starter',
         version = '*',
@@ -28,6 +29,14 @@ return {
                 },
             })
         end,
+    },
+    ]]
+    {
+        "folke/snacks.nvim",
+        ---@type snacks.Config
+        opts = {
+            dashboard = {}
+        }
     },
     {
         'lewis6991/gitsigns.nvim',
