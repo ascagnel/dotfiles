@@ -168,6 +168,13 @@ return {
         -- Lazy loading on 'VimEnter' event is necessary.
         event = 'VimEnter',
         config = function() require("vgit").setup() end,
+        keys = {
+            {
+                "<leader>s",
+                function() require('vgit').buffer_hunk_stage() end,
+                desc = "Stage hunk"
+            },
+        },
     },
     {
         'tpope/vim-fugitive',
